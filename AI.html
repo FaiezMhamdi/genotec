@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>AI & Machine Learning | Faiez Mhamdi</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a2a 0%, #0f0f2d 50%, #0a0a2a 100%);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      padding: 2rem 1.5rem;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    /* Animated Background */
+    .ai-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .ai-bg::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+
+    .course-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: rgba(10, 20, 40, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 255, 255, 0.2);
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+    }
+
+    .course-header {
+      background: linear-gradient(135deg, rgba(0, 20, 40, 0.95), rgba(0, 40, 60, 0.95));
+      padding: 2rem 2rem 1.5rem 2rem;
+      border-bottom: 2px solid #00ffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .course-header::before {
+      content: '🤖';
+      position: absolute;
+      right: -30px;
+      top: -30px;
+      font-size: 150px;
+      opacity: 0.1;
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      color: #00ffff;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+    }
+
+    .back-button:hover {
+      background: rgba(0, 255, 255, 0.4);
+      transform: translateX(-5px);
+    }
+
+    .course-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .course-header h1 span {
+      background: linear-gradient(135deg, #ff00ff, #00ffff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      border: 1px solid rgba(0, 255, 255, 0.5);
+    }
+
+    /* AI Stats Cards */
+    .ai-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 2rem;
+    }
+
+    .stat-card {
+      background: rgba(0, 20, 40, 0.8);
+      backdrop-filter: blur(5px);
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: center;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: #00ffff;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00ffff;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-top: 0.3rem;
+    }
+
+    /* Tabs */
+    .ai-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: rgba(0, 20, 40, 0.8);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      padding: 0.7rem 1.5rem;
+      border-radius: 2rem;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .tab-btn:hover {
+      background: rgba(0, 255, 255, 0.2);
+      border-color: #00ffff;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      color: #0a0a2a;
+      border-color: transparent;
+    }
+
+    /* Content Area */
+    .ai-content {
+      margin: 1rem 2rem 2rem 2rem;
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-pane.active-pane {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* AI Layers Visual */
+    .layers-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .layer {
+      background: linear-gradient(90deg, rgba(0, 255, 255, 0.1), rgba(0, 20, 40, 0.8));
+      padding: 1rem;
+      border-radius: 1rem;
+      border-left: 4px solid #00ffff;
+      transition: all 0.3s;
+    }
+
+    .layer:hover {
+      transform: translateX(10px);
+      background: linear-gradient(90deg, rgba(0, 255, 255, 0.2), rgba(0, 20, 40, 0.9));
+    }
+
+    .layer-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #00ffff;
+    }
+
+    /* Neural Network Visualization */
+    .neural-viz {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 1rem 0;
+      text-align: center;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+    }
+
+    canvas {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 1rem;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Definition Cards */
+    .def-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .def-card {
+      background: rgba(0, 20, 40, 0.8);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      transition: all 0.3s;
+    }
+
+    .def-card:hover {
+      transform: scale(1.02);
+      border-color: #ff00ff;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+    }
+
+    .def-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .def-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #00ffff;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #00ffff, #ff00ff);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -0.5rem;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #00ffff;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    .timeline-year {
+      font-size: 0.9rem;
+      color: #00ffff;
+      font-weight: 700;
+    }
+
+    .timeline-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.3rem 0;
+    }
+
+    /* Resources */
+    .resources-section {
+      background: rgba(0, 20, 40, 0.8);
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+    }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      color: #00ffff;
+      margin: 0.3rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    .resource-link:hover {
+      background: rgba(0, 255, 255, 0.4);
+    }
+
+    footer {
+      background: rgba(0, 20, 40, 0.9);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #aaa;
+      border-top: 1px solid rgba(0, 255, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      .course-header h1 {
+        font-size: 1.8rem;
+      }
+      .ai-stats {
+        margin: 1rem;
+      }
+      .ai-content {
+        margin: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ai-bg"></div>
+  <div class="course-container">
+    <div class="course-header">
+      <a href="shop.html" class="back-button">
+        ← Back to Shop
+      </a>
+      <h1>🤖 AI & Machine Learning <span>futuristic tech</span></h1>
+      <p style="margin-top: 0.75rem; opacity: 0.9;">Explore the fascinating world of Artificial Intelligence, Neural Networks, and Machine Learning. From definitions to deep learning - understand how AI is shaping our future.</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="ai-stats">
+      <div class="stat-card">
+        <div class="stat-number">1956</div>
+        <div class="stat-label">Birth of AI at Dartmouth Conference</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$15.7T</div>
+        <div class="stat-label">Projected AI Economy by 2030</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">77%</div>
+        <div class="stat-label">Devices using AI today</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">175B+</div>
+        <div class="stat-label">Parameters in GPT-4</div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="ai-tabs">
+      <button class="tab-btn active" data-tab="definitions">📖 Definitions</button>
+      <button class="tab-btn" data-tab="layers">🧠 Layers of AI</button>
+      <button class="tab-btn" data-tab="types">📊 ML Types</button>
+      <button class="tab-btn" data-tab="history">📜 History</button>
+      <button class="tab-btn" data-tab="future">🚀 Future</button>
+    </div>
+
+    <div class="ai-content">
+      <!-- Definitions Tab -->
+      <div class="tab-pane active-pane" id="definitions">
+        <h2 style="color: #00ffff; margin-bottom: 1rem;">What is Artificial Intelligence?</h2>
+        <div class="def-grid">
+          <div class="def-card">
+            <div class="def-icon">🤖</div>
+            <div class="def-title">Artificial Intelligence (AI)</div>
+            <p>Simulation of human intelligence in machines programmed to think, learn, and problem-solve like humans.</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">📊</div>
+            <div class="def-title">Machine Learning (ML)</div>
+            <p>Subset of AI where systems learn from data without explicit programming. Algorithms improve through experience.</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">🧠</div>
+            <div class="def-title">Deep Learning (DL)</div>
+            <p>Advanced ML using neural networks with multiple layers to process complex patterns like images and speech.</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">💡</div>
+            <div class="def-title">Neural Networks</div>
+            <p>Computing systems inspired by biological brains, consisting of interconnected nodes (neurons) that process information.</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">🎯</div>
+            <div class="def-title">Natural Language Processing (NLP)</div>
+            <p>AI's ability to understand, interpret, and generate human language. Powers chatbots, translation, and voice assistants.</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">👁️</div>
+            <div class="def-title">Computer Vision</div>
+            <p>AI that enables computers to see, recognize, and interpret visual information from images and videos.</p>
+          </div>
+        </div>
+
+        <!-- Neural Network Visualization -->
+        <div class="neural-viz">
+          <h3 style="color: #00ffff; margin-bottom: 1rem;">🧬 Neural Network Visualization</h3>
+          <canvas id="neuralCanvas" width="600" height="200" style="width: 100%; height: auto; max-width: 600px;"></canvas>
+          <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">Input Layer → Hidden Layers → Output Layer</p>
+        </div>
+      </div>
+
+      <!-- Layers of AI Tab -->
+      <div class="tab-pane" id="layers">
+        <h2 style="color: #00ffff; margin-bottom: 1rem;">The 7 Layers of AI</h2>
+        <div class="layers-container">
+          <div class="layer">
+            <div class="layer-title">Layer 1: Data Collection</div>
+            <p>Gathering raw data from sensors, databases, APIs, and user interactions. Quality data = Quality AI.</p>
+          </div>
+          <div class="layer">
+            <div class="layer-title">Layer 2: Data Processing & Cleaning</div>
+            <p>Removing noise, handling missing values, normalizing data. Preparing data for analysis.</p>
+          </div>
+          <div class="layer">
+            <div class="layer-title">Layer 3: Feature Engineering</div>
+            <p>Selecting and transforming relevant variables that help the model make accurate predictions.</p>
+          </div>
+          <div class="layer">
+            <div class="layer-title">Layer 4: Model Training</div>
+            <p>Algorithms learn patterns from data. Splitting into training/validation sets to prevent overfitting.</p>
+          </div>
+          <div class="layer">
+            <div class="layer-title">Layer 5: Model Evaluation</div>
+            <p>Testing model performance using metrics like accuracy, precision, recall, and F1-score.</p>
+          </div>
+          <div class="layer">
+            <div class="layer-title">Layer 6: Hyperparameter Tuning</div>
+            <p>Optimizing model parameters for better performance using techniques like Grid Search.</p>
+          </div>
+          <div class="layer">
+            <div class="layer-title">Layer 7: Deployment & Monitoring</div>
+            <p>Putting models into production and continuously monitoring performance for drift.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Types of ML Tab -->
+      <div class="tab-pane" id="types">
+        <h2 style="color: #00ffff; margin-bottom: 1rem;">Types of Machine Learning</h2>
+        <div class="def-grid">
+          <div class="def-card">
+            <div class="def-icon">📚</div>
+            <div class="def-title">Supervised Learning</div>
+            <p>Learn from labeled data. Input → Output mapping. Examples: Classification, Regression, Spam Detection, Price Prediction.</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">🔍</div>
+            <div class="def-title">Unsupervised Learning</div>
+            <p>Find patterns in unlabeled data. Examples: Clustering (customer segmentation), Association (market basket analysis).</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">🎮</div>
+            <div class="def-title">Reinforcement Learning</div>
+            <p>Learn through trial and error. Agent takes actions, receives rewards/penalties. Examples: Game AI, Robotics, Self-driving cars.</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">🔄</div>
+            <div class="def-title">Semi-supervised Learning</div>
+            <p>Combination of labeled and unlabeled data. Useful when labeling is expensive.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- History Tab -->
+      <div class="tab-pane" id="history">
+        <h2 style="color: #00ffff; margin-bottom: 1rem;">The Evolution of AI</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1950</div>
+            <div class="timeline-title">Turing Test</div>
+            <p>Alan Turing proposes test for machine intelligence.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1956</div>
+            <div class="timeline-title">Dartmouth Conference</div>
+            <p>Birth of AI as a field. Term "Artificial Intelligence" coined.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1997</div>
+            <div class="timeline-title">Deep Blue</div>
+            <p>IBM's AI beats world chess champion Garry Kasparov.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2012</div>
+            <div class="timeline-title">Deep Learning Breakthrough</div>
+            <p>AlexNet wins ImageNet, sparking the deep learning revolution.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2016</div>
+            <div class="timeline-title">AlphaGo</div>
+            <p>Google's AI beats world champion at complex game of Go.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2023+</div>
+            <div class="timeline-title">Generative AI Era</div>
+            <p>GPT-4, DALL-E, and LLMs transform how we interact with AI.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Future Tab -->
+      <div class="tab-pane" id="future">
+        <h2 style="color: #00ffff; margin-bottom: 1rem;">The Future of AI</h2>
+        <div class="def-grid">
+          <div class="def-card">
+            <div class="def-icon">🧬</div>
+            <div class="def-title">AGI (Artificial General Intelligence)</div>
+            <p>AI that can perform any intellectual task a human can. The holy grail of AI research.</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">⚕️</div>
+            <div class="def-title">AI in Healthcare</div>
+            <p>Drug discovery, personalized medicine, early disease detection, robotic surgery.</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">🌍</div>
+            <div class="def-title">Climate Change Solutions</div>
+            <p>AI optimizing energy grids, predicting natural disasters, designing sustainable materials.</p>
+          </div>
+          <div class="def-card">
+            <div class="def-icon">🎨</div>
+            <div class="def-title">Creative AI</div>
+            <p>AI-generated art, music, films, and literature. Human-AI collaboration in creative fields.</p>
+          </div>
+        </div>
+        
+        <!-- Resources -->
+        <div class="resources-section">
+          <div class="resources-title" style="color: #00ffff; margin-bottom: 0.5rem;">📎 AI Learning Resources</div>
+          <div class="resources-list" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="resource-link" onclick="downloadAIResource('cheatsheet')">📘 AI/ML Cheat Sheet</button>
+            <button class="resource-link" onclick="downloadAIResource('projects')">💻 AI Project Ideas</button>
+            <button class="resource-link" onclick="downloadAIResource('roadmap')">🗺️ Learning Roadmap</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      © Faiez Mhamdi — Robotics, AI & Computer Science | The future is intelligent. Be part of the AI revolution.
+    </footer>
+  </div>
+
+  <script>
+    // Tab switching
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const panes = document.querySelectorAll('.tab-pane');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.getAttribute('data-tab');
+        
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        panes.forEach(pane => pane.classList.remove('active-pane'));
+        document.getElementById(tabId).classList.add('active-pane');
+      });
+    });
+
+    // Neural Network Canvas Animation
+    const canvas = document.getElementById('neuralCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      
+      function resizeCanvas() {
+        const container = canvas.parentElement;
+        const width = Math.min(600, container.clientWidth - 40);
+        canvas.width = width;
+        canvas.height = 200;
+        drawNeuralNetwork();
+      }
+      
+      function drawNeuralNetwork() {
+        if (!ctx) return;
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+        
+        // Layer positions
+        const layers = [0.1, 0.3, 0.5, 0.7, 0.9];
+        const neuronsPerLayer = [3, 4, 5, 4, 2];
+        
+        const points = [];
+        
+        // Draw neurons and connections
+        for (let l = 0; l < layers.length; l++) {
+          const x = layers[l] * w;
+          const numNeurons = neuronsPerLayer[l];
+          const pointsLayer = [];
+          
+          for (let n = 0; n < numNeurons; n++) {
+            const y = (n + 1) * (h / (numNeurons + 1));
+            pointsLayer.push({ x, y });
+            
+            // Draw connections to next layer
+            if (l < layers.length - 1) {
+              const nextX = layers[l + 1] * w;
+              const nextNumNeurons = neuronsPerLayer[l + 1];
+              for (let nn = 0; nn < nextNumNeurons; nn++) {
+                const nextY = (nn + 1) * (h / (nextNumNeurons + 1));
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(nextX, nextY);
+                ctx.strokeStyle = `rgba(0, 255, 255, ${0.1 + Math.random() * 0.2})`;
+                ctx.stroke();
+              }
+            }
+          }
+          points.push(pointsLayer);
+        }
+        
+        // Draw neurons
+        for (let l = 0; l < points.length; l++) {
+          for (let p of points[l]) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
+            const gradient = ctx.createRadialGradient(p.x - 2, p.y - 2, 2, p.x, p.y, 10);
+            gradient.addColorStop(0, '#00ffff');
+            gradient.addColorStop(1, '#ff00ff');
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#00ffff';
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+        }
+      }
+      
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+      
+      // Animate connections
+      let hue = 0;
+      setInterval(() => {
+        drawNeuralNetwork();
+      }, 2000);
+    }
+
+    // Download resources
+    function downloadAIResource(type) {
+      let content = '';
+      let filename = '';
+      
+      if (type === 'cheatsheet') {
+        content = `AI/ML CHEAT SHEET
+
+SUPERVISED LEARNING ALGORITHMS:
+• Linear Regression - Predict continuous values
+• Logistic Regression - Binary classification
+• Decision Trees - Tree-based decisions
+• Random Forest - Ensemble of decision trees
+• SVM - Finds optimal boundary
+• KNN - Similarity-based classification
+• Naive Bayes - Probability-based classification
+
+UNSUPERVISED LEARNING:
+• K-Means Clustering - Group similar data
+• DBSCAN - Density-based clustering
+• PCA - Dimensionality reduction
+• t-SNE - Visualization of high-dim data
+
+DEEP LEARNING ARCHITECTURES:
+• CNN - Image processing
+• RNN/LSTM - Sequential data (time series, text)
+• Transformer - Modern NLP (BERT, GPT)
+• Autoencoders - Data compression
+• GANs - Generate synthetic data
+
+EVALUATION METRICS:
+Classification: Accuracy, Precision, Recall, F1, ROC-AUC
+Regression: MAE, MSE, RMSE, R²
+
+POPULAR FRAMEWORKS:
+TensorFlow, PyTorch, Scikit-learn, Keras, Hugging Face
+
+Created by Faiez Mhamdi - AI & ML Course`;
+        filename = 'ai_ml_cheatsheet.txt';
+      } else if (type === 'projects') {
+        content = `AI PROJECT IDEAS FOR BEGINNERS
+
+LEVEL 1 (Easy):
+1. Spam Email Classifier - Using Naive Bayes
+2. Handwritten Digit Recognition - MNIST dataset
+3. Movie Recommendation System - Collaborative filtering
+4. Sentiment Analyzer - Text classification
+5. Image Classifier - Cats vs Dogs
+
+LEVEL 2 (Intermediate):
+1. Chatbot using Transformers
+2. Face Detection & Recognition
+3. Stock Price Predictor
+4. Object Detection (YOLO)
+5. Music Genre Classifier
+
+LEVEL 3 (Advanced):
+1. Self-driving Car Simulation
+2. Real-time Sign Language Translator
+3. Medical Image Segmentation
+4. Generative Art with GANs
+5. Language Translation Model
+
+TOOLS YOU'LL NEED:
+Python, Jupyter Notebook, TensorFlow/PyTorch, OpenCV, NLTK
+
+Start with small projects and gradually increase complexity!`;
+        filename = 'ai_project_ideas.txt';
+      } else if (type === 'roadmap') {
+        content = `AI LEARNING ROADMAP
+
+MONTH 1-2: Foundations
+□ Python Programming
+□ Basic Mathematics (Linear Algebra, Calculus)
+□ Statistics & Probability
+
+MONTH 3-4: Core ML
+□ Data Analysis (Pandas, NumPy)
+□ Data Visualization (Matplotlib, Seaborn)
+□ Supervised Learning Algorithms
+□ Unsupervised Learning
+
+MONTH 5-6: Deep Learning
+□ Neural Networks Basics
+□ TensorFlow/PyTorch
+□ CNN for Computer Vision
+□ RNN/LSTM for Sequence Data
+
+MONTH 7-8: Specialization
+□ NLP (Transformers, BERT)
+□ Computer Vision (OpenCV)
+□ Model Deployment (Flask, Docker)
+□ MLOps Basics
+
+MONTH 9-12: Advanced & Projects
+□ LLMs & Prompt Engineering
+□ Build Portfolio Projects
+□ Kaggle Competitions
+□ Contribute to Open Source
+
+RECOMMENDED COURSES:
+• Andrew Ng's ML Course
+• Fast.ai
+• Deep Learning Specialization
+
+Stay consistent and build projects!`;
+        filename = 'ai_learning_roadmap.txt';
+      }
+      
+      const blob = new Blob([content], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+/* about.css - Specific styles for about page */
+
+/* ---------------- About Page Specific Styles ---------------- */
+
+/* Personal Info */
+.personal-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
+  border: 1px solid rgba(31, 143, 255, 0.1);
+}
+
+.info-item i {
+  width: 20px;
+  text-align: center;
+  color: var(--accent1);
+}
+
+.info-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item strong {
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.info-item span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent1), var(--accent2));
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.timeline-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.timeline-icon i {
+  color: #000;
+  font-size: 20px;
+}
+
+.timeline-content {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(31, 143, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  border-color: rgba(31, 143, 255, 0.3);
+  transform: translateX(10px);
+}
+
+.timeline-content h3 {
+  color: var(--text);
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+
+.timeline-date {
+  color: var(--accent1);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.timeline-content p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  background: rgba(31, 143, 255, 0.1);
+  color: var(--accent1);
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(31, 143, 255, 0.2);
+}
+
+/* Philosophy Section */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.philosophy-card {
+  text-align: center;
+  padding: 40px 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
+  border: 1px solid rgba(31, 143, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.philosophy-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(31, 143, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(31, 143, 255, 0.15);
+}
+
+/* .philosophy-icon now uses shared .icon-circle from style.css */
+
+.philosophy-card h3 {
+  color: var(--text);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.philosophy-card p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.philosophy-quote {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.philosophy-quote blockquote {
+  font-size: 1.2rem;
+  color: var(--text);
+  font-style: italic;
+  line-height: 1.6;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--accent1);
+  position: relative;
+}
+
+.philosophy-quote blockquote::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--accent1);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  opacity: 0.3;
+}
+
+/* Experience Section Specific */
+.experience-section {
+  position: relative;
+}
+
+.experience-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 70% 30%, rgba(255, 77, 77, 0.05) 0%, transparent 50%);
+  z-index: -1;
+}
+
+/* Philosophy Section Specific */
+.philosophy-section {
+  position: relative;
+}
+
+.philosophy-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 70%, rgba(31, 143, 255, 0.05) 0%, transparent 50%);
+  z-index: -1;
+}
+
+/* Responsive About Page */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 25px;
+  }
+  
+  .timeline-item {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .timeline-icon {
+    margin-right: 0;
+    align-self: flex-start;
+  }
+  
+  .timeline-content:hover {
+    transform: translateY(-5px);
+  }
+  
+  .timeline-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .timeline-icon i {
+    font-size: 16px;
+  }
+  
+  .timeline-content {
+    padding: 20px;
+  }
+  
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .philosophy-card {
+    padding: 30px 20px;
+  }
+  
+  .philosophy-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .philosophy-icon i {
+    font-size: 1.5rem;
+  }
+  
+  .philosophy-quote blockquote {
+    font-size: 1.1rem;
+    padding: 20px;
+  }
+  
+  .personal-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline::before {
+    left: 20px;
+  }
+  
+  .timeline-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .tech-tags {
+    justify-content: center;
+  }
+  
+  .philosophy-card {
+    padding: 25px 15px;
+  }
+}

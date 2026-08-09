@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://via.placeholder.com data:; media-src 'self'; script-src 'self'; frame-ancestors 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Shop — Faiez Mhamdi | Robotics & AI Education</title>
+  <meta name="description" content="Browse courses and robotics kits by Faiez Mhamdi. Python programming, AI & machine learning courses, Arduino and Raspberry Pi starter kits for students." />
+  <meta name="author" content="Faiez Mhamdi" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Shop — Faiez Mhamdi | Robotics & AI Education" />
+  <meta property="og:description" content="Browse courses and robotics kits. Python programming, AI & machine learning courses, Arduino and Raspberry Pi starter kits." />
+  <meta property="og:image" content="icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Shop — Faiez Mhamdi | Robotics & AI Education" />
+  <meta name="twitter:description" content="Courses and robotics kits for students of all levels." />
+
+  <link rel="icon" href="11111.png" type="image/png" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha384-/o6I2CkkWC//PSjvWC/eYN7l3xM3tJm8ZzVkCOfp//W05QcE3mlGskpoHB6XqI+B" crossorigin="anonymous"/>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="enhancements.css" />
+  <link rel="stylesheet" href="shop.css" />
+
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="floating-bg"></div>
+  <div id="site-header" data-active="shop" data-cta="cart"></div>
+  <script src="components.js"></script>
+
+  <main id="main-content">
+  <!-- SHOP HERO SECTION -->
+  <section class="shop-hero page-hero section">
+    <div class="page-hero-content">
+      <div class="page-hero-badge">Learn & Build</div>
+      <h1>Courses & Robotics Kits</h1>
+      <p>Explore hands-on robotics kits, AI projects, and comprehensive coding courses designed for students and tech enthusiasts of all levels.</p>
+      <div class="hero-actions">
+        <a href="#featured" class="btn btn-primary">
+          <span>Browse Courses</span>
+          <i class="fas fa-arrow-down"></i>
+        </a>
+        <a href="#how-it-works" class="btn btn-secondary">
+          <i class="fas fa-info-circle"></i>
+          <span>How It Works</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section id="featured" class="section">
+    <div class="section-header">
+      <h2>Featured Products</h2>
+      <p class="section-subtitle">Hand-picked courses and kits for optimal learning</p>
+    </div>
+
+    <div class="products-grid">
+      <!-- Python Course -->
+      <div class="product-card">
+        <div class="product-badge">Bestseller</div>
+        <div class="product-image">
+          <img src="pic2.webp" alt="Python Programming Course" loading="lazy">
+        </div>
+        <div class="product-content">
+          <span class="product-category">Online Course</span>
+          <a href="python.html" style="text-decoration: none; color: black;">
+          <h3>Python Programming</h3>
+          </a>
+          <p class="product-description">Master Python from basics to advanced concepts with real-world projects. Perfect for beginners starting their coding journey.</p>
+          <div class="product-features">
+            <span class="product-feature">30+ Lessons</span>
+            <span class="product-feature">5 Projects</span>
+            <span class="product-feature">Lifetime Access</span>
+            <span class="product-feature">Ages 10+</span>
+          </div>
+          <div class="product-price">
+            <div>
+              <span class="price">$49.99</span>
+              <span class="original-price">$79.99</span>
+              <span class="discount">38% OFF</span>
+            </div>
+          </div>
+          <button class="btn btn-course add-to-cart" data-product="Python Course" data-price="49.99">
+            <i class="fas fa-cart-plus"></i>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Robotics Kit -->
+      <div class="product-card">
+        <div class="product-badge">Popular</div>
+        <div class="product-image">
+          <img src="pic3.webp" alt="Robotics Starter Kit" loading="lazy">
+        </div>
+        <div class="product-content">
+          <span class="product-category">Hardware Kit</span>
+          <h3>Robotics Starter Kit</h3>
+          <p class="product-description">Complete kit to build and program your first robot. Includes sensors, motors, and step-by-step tutorials.</p>
+          <div class="product-features">
+            <span class="product-feature">All Components</span>
+            <span class="product-feature">15 Projects</span>
+            <span class="product-feature">Video Guides</span>
+            <span class="product-feature">Ages 12+</span>
+          </div>
+          <div class="product-price">
+            <div>
+              <span class="price">$89.99</span>
+              <span class="original-price">$119.99</span>
+              <span class="discount">25% OFF</span>
+            </div>
+          </div>
+          <button class="btn btn-course add-to-cart" data-product="Robotics Kit" data-price="89.99">
+            <i class="fas fa-cart-plus"></i>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- AI Projects -->
+      <div class="product-card">
+        <div class="product-badge">New</div>
+        <div class="product-image">
+          <img src="pic4.webp" alt="AI & Machine Learning Projects" loading="lazy">
+        </div>
+        <div class="product-content">
+          <span class="product-category">Project Bundle</span>
+          <a href="AI.html" style="text-decoration: none; color: black;">
+          <h3>AI & Machine Learning</h3>
+          </a>
+          <p class="product-description">Explore artificial intelligence through practical projects. Learn computer vision, NLP, and predictive models.</p>
+          <div class="product-features">
+            <span class="product-feature">8 AI Projects</span>
+            <span class="product-feature">Datasets Included</span>
+            <span class="product-feature">Code Templates</span>
+            <span class="product-feature">Ages 14+</span>
+          </div>
+          <div class="product-price">
+            <div>
+              <span class="price">$69.99</span>
+              <span class="original-price">$99.99</span>
+              <span class="discount">30% OFF</span>
+            </div>
+          </div>
+          <button class="btn btn-course add-to-cart" data-product="AI Projects" data-price="69.99">
+            <i class="fas fa-cart-plus"></i>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="section how-it-works">
+    <div class="section-header">
+      <h2>How It Works</h2>
+      <p class="section-subtitle">Simple process to start your learning journey</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-icon icon-circle">
+          <i class="fas fa-search"></i>
+        </div>
+        <h3>Browse & Select</h3>
+        <p>Explore our courses and kits. Choose what matches your interests and skill level.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-icon icon-circle">
+          <i class="fas fa-cart-plus"></i>
+        </div>
+        <h3>Add to Cart</h3>
+        <p>Select your preferred products and add them to your shopping cart for purchase.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-icon icon-circle">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <h3>Start Learning</h3>
+        <p>Access online courses instantly or receive your physical kit with detailed guides.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP CTA -->
+  <section class="shop-cta cta-section">
+    <div class="cta-content">
+      <h2>Start Your Tech Journey Today</h2>
+      <p>Join hundreds of students learning robotics and AI with our hands-on approach</p>
+      <div class="cta-actions">
+        <button class="btn btn-primary btn-large" id="ctaViewCart">
+          <span>View Cart & Checkout</span>
+          <i class="fas fa-shopping-cart"></i>
+        </button>
+        <a href="contact.html" class="btn btn-outline btn-large">
+          <span>Need Help?</span>
+          <i class="fas fa-question-circle"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="close-cart">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Cart items will be dynamically added here -->
+      <div class="empty-cart-message">
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div class="cart-total">
+      <div class="total-line">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <div class="total-line">
+        <span>Shipping:</span>
+        <span>Free</span>
+      </div>
+      <div class="total-line final">
+        <span>Total:</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="checkout-btn">
+        <i class="fas fa-lock"></i>
+        <span>Proceed to Checkout</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- OVERLAY -->
+  <div class="overlay"></div>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="shared.js"></script>
+  <script src="enhancements.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>

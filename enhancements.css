@@ -1,0 +1,167 @@
+/* ─── Preloader ────────────────────────────────────────────── */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #0b0c10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+#preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+.preloader-content {
+  text-align: center;
+}
+.preloader-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1f8fff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pulse-glow 1.5s ease-in-out infinite;
+  margin-bottom: 1.5rem;
+}
+.preloader-bar {
+  width: 200px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.preloader-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #1f8fff, #00d4ff);
+  border-radius: 3px;
+  animation: preloader-fill 1.2s ease-out forwards;
+}
+@keyframes preloader-fill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px rgba(31, 143, 255, 0.5)); }
+  50% { opacity: 0.7; filter: drop-shadow(0 0 20px rgba(31, 143, 255, 0.8)); }
+}
+
+/* ─── Particle Canvas ─────────────────────────────────────── */
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── Typed Text Cursor ───────────────────────────────────── */
+#typed-text::after {
+  content: '|';
+  animation: blink 0.7s infinite;
+  color: #00d4ff;
+  font-weight: 300;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ─── Scroll Reveal Animations ────────────────────────────── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Stagger children within revealed sections */
+.scroll-reveal.revealed .product-card,
+.scroll-reveal.revealed .feature-card,
+.scroll-reveal.revealed .philosophy-card {
+  animation: fadeSlideUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+.scroll-reveal.revealed .product-card:nth-child(1),
+.scroll-reveal.revealed .feature-card:nth-child(1) { animation-delay: 0.1s; }
+.scroll-reveal.revealed .product-card:nth-child(2),
+.scroll-reveal.revealed .feature-card:nth-child(2) { animation-delay: 0.2s; }
+.scroll-reveal.revealed .product-card:nth-child(3),
+.scroll-reveal.revealed .feature-card:nth-child(3) { animation-delay: 0.3s; }
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero section should always be visible (no scroll-reveal on first section) */
+.hero.scroll-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Button Glow Pulse ───────────────────────────────────── */
+.glow-pulse {
+  position: relative;
+  overflow: visible;
+}
+.glow-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #1f8fff, #00d4ff, #1f8fff);
+  background-size: 200% 200%;
+  animation: glow-shift 3s ease-in-out infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  filter: blur(8px);
+}
+.glow-pulse:hover::before {
+  opacity: 1;
+}
+@keyframes glow-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ─── Cursor Glow Trail ───────────────────────────────────── */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(31, 143, 255, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  transition: left 0.1s ease-out, top 0.1s ease-out;
+}
+
+/* ─── Enhanced Button Hover ───────────────────────────────── */
+.btn {
+  transition: transform 0.2s ease-out, box-shadow 0.3s;
+}
+.btn:hover {
+  box-shadow: 0 0 20px rgba(31, 143, 255, 0.3), 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Reduce motion for accessibility ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  #typed-text::after { animation: none; }
+  .glow-pulse::before { animation: none; }
+  .cursor-glow { display: none; }
+  #particle-canvas { display: none; }
+  #preloader { display: none; }
+  .preloader-logo { animation: none; }
+}

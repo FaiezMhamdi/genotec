@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Guided Python Course | Faiez Mhamdi</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f6f9fc 0%, #eef2f7 100%);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      padding: 2rem 1.5rem;
+      color: #0a1e2f;
+    }
+
+    .course-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .course-header {
+      background: #0a2b3e;
+      padding: 2rem 2rem 1.5rem 2rem;
+      color: white;
+      border-bottom: 4px solid #f4c542;
+    }
+
+    .course-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .course-header h1 span {
+      background: #f4c542;
+      color: #0a2b3e;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+    }
+
+    .course-header p {
+      margin-top: 0.75rem;
+      opacity: 0.85;
+      font-size: 1.05rem;
+      max-width: 85%;
+    }
+
+    /* Progress Tracker - NEW */
+    .progress-tracker {
+      background: linear-gradient(135deg, #1e3c2c 0%, #2a5a3a 100%);
+      margin: 1rem 2rem;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      color: white;
+    }
+
+    .progress-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .progress-bar-container {
+      background: rgba(255,255,255,0.3);
+      border-radius: 1rem;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0%;
+      background: #f4c542;
+      height: 100%;
+      transition: width 0.3s ease;
+      border-radius: 1rem;
+    }
+
+    /* Challenge Mode Toggle - NEW */
+    .mode-toggle {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      background: #f1f5f9;
+      border-radius: 3rem;
+    }
+
+    .mode-btn {
+      flex: 1;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+      background: transparent;
+    }
+
+    .mode-btn.active {
+      background: #f4c542;
+      color: #0a2b3e;
+    }
+
+    .challenge-card {
+      background: linear-gradient(135deg, #fff5e6 0%, #ffe8d4 100%);
+      border-left: 4px solid #f4c542;
+    }
+
+    /* Resources Section - NEW */
+    .resources-section {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #f8fafc;
+      border-radius: 1rem;
+    }
+
+    .resources-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #1e2f3e;
+    }
+
+    .resources-list {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .resource-link {
+      background: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: #0a2b3e;
+      border: 1px solid #cbd5e1;
+      transition: all 0.2s;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .resource-link:hover {
+      background: #f4c542;
+      border-color: #f4c542;
+    }
+
+    /* Back to Shop Button - NEW */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f1f5f9;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      color: #1e2f3e;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .back-button:hover {
+      background: #e2e8f0;
+      transform: translateX(-3px);
+    }
+
+    .split-layout {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .curriculum-sidebar {
+      flex: 1.2;
+      min-width: 260px;
+      background: #fefaf5;
+      border-right: 1px solid #e2e8f0;
+      padding: 1.8rem 1rem;
+    }
+
+    .curriculum-sidebar h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      border-left: 5px solid #f4c542;
+      padding-left: 1rem;
+    }
+
+    .topic-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .topic-btn {
+      background: transparent;
+      border: none;
+      text-align: left;
+      padding: 0.85rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #1e2f3e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: inherit;
+    }
+
+    .topic-btn:hover {
+      background: #fff0e0;
+      transform: translateX(5px);
+    }
+
+    .topic-btn.active {
+      background: #f4c54220;
+      border-left: 4px solid #f4c542;
+      font-weight: 600;
+      color: #b45309;
+    }
+
+    .topic-btn.completed {
+      position: relative;
+    }
+
+    .topic-btn.completed::after {
+      content: "✓";
+      color: #10b981;
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+
+    .badge-lesson {
+      font-size: 0.7rem;
+      background: #e2e8f0;
+      padding: 0.2rem 0.6rem;
+      border-radius: 30px;
+      color: #2c3e50;
+    }
+
+    .interactive-panel {
+      flex: 3;
+      min-width: 300px;
+      background: #ffffff;
+      padding: 1.8rem 2rem;
+    }
+
+    .lesson-card {
+      background: #fafcff;
+      border-radius: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid #edf2f7;
+      padding: 1rem 1.2rem;
+    }
+
+    .lesson-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #0f3b2c;
+    }
+
+    .lesson-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #2d3e50;
+      background: #f1f5f9;
+      padding: 1rem;
+      border-radius: 1rem;
+      margin: 1rem 0;
+      white-space: pre-wrap;
+    }
+
+    .code-editor-area {
+      background: #1e293b;
+      border-radius: 1.2rem;
+      padding: 1rem;
+      margin: 1.5rem 0 0.8rem 0;
+    }
+
+    .editor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      color: #cbd5e1;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    textarea {
+      width: 100%;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.9rem;
+      padding: 1rem;
+      border: none;
+      border-radius: 1rem;
+      resize: vertical;
+      outline: none;
+      line-height: 1.5;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-run {
+      background: #10b981;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-reset {
+      background: #475569;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+    }
+
+    .btn-complete {
+      background: #f4c542;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      color: #0a2b3e;
+      cursor: pointer;
+    }
+
+    .btn-run:hover {
+      background: #059669;
+      transform: scale(0.98);
+    }
+
+    .console-output {
+      background: #0a0f1c;
+      color: #bbf0d0;
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .console-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #2c3e50;
+      display: block;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 1rem;
+      }
+      .interactive-panel {
+        padding: 1.5rem;
+      }
+      .lesson-title {
+        font-size: 1.4rem;
+      }
+    }
+
+    footer {
+      background: #f1f5f9;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #4a627a;
+      border-top: 1px solid #e2edf7;
+    }
+  </style>
+</head>
+<body>
+<div class="course-container">
+  <div class="course-header">
+    <a href="shop.html" class="back-button" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 2rem; text-decoration: none; color: white; margin-bottom: 1rem;">
+      ← Back to Shop
+    </a>
+    <h1>🐍 Python Mastery <span>guided path</span></h1>
+    <p>Introduction: What is Python? Created by Guido van Rossum in 1991. High-level, hybrid compiled+interpreted (source → bytecode → PVM).<br>
+    Step‑by‑step from fundamentals to OOP — with live coding & examples.</p>
+  </div>
+
+  <!-- Progress Tracker -->
+  <div class="progress-tracker">
+    <div class="progress-stats">
+      <span>📊 Course Progress</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-fill" id="progressBar"></div>
+    </div>
+    <div style="margin-top: 0.5rem; font-size: 0.8rem;">
+      <span id="completedCount">0</span> / <span id="totalCount">0</span> lessons completed
+    </div>
+  </div>
+
+  <div class="split-layout">
+    <div class="curriculum-sidebar">
+      <h2>📚 Full curriculum</h2>
+      <div class="topic-list" id="topicList"></div>
+      
+      <!-- Resources Section -->
+      <div class="resources-section">
+        <div class="resources-title">📎 Downloadable Resources</div>
+        <div class="resources-list">
+          <button class="resource-link" onclick="downloadCheatSheet()">
+            <i class="fas fa-file-pdf"></i> Python Cheat Sheet
+          </button>
+          <button class="resource-link" onclick="downloadExercises()">
+            <i class="fas fa-download"></i> Practice Exercises
+          </button>
+        </div>
+      </div>
+      
+      <div style="margin-top: 1rem; font-size: 0.75rem; background:#e9ecef; border-radius: 1rem; padding: 0.8rem; text-align:center;">
+        💡 Each lesson includes editable code + run console<br>
+        ✅ Click "Mark Complete" to track your progress
+      </div>
+    </div>
+
+    <div class="interactive-panel">
+      <!-- Mode Toggle -->
+      <div class="mode-toggle">
+        <button class="mode-btn active" id="learnModeBtn">📖 Learn Mode</button>
+        <button class="mode-btn" id="challengeModeBtn">💪 Challenge Mode</button>
+      </div>
+
+      <div class="lesson-card" id="lessonCard">
+        <div class="lesson-title" id="lessonTitle">Introduction & Hybrid Execution</div>
+        <div class="lesson-description" id="lessonDesc">
+          Python: high-level, general-purpose. Created by <strong>Guido van Rossum</strong> (1991).<br>
+          “High-level” means human-friendly abstraction, automatic memory management.<br>
+          <strong>Hybrid model:</strong> Source code → bytecode (.pyc) → PVM (Python Virtual Machine). Combines compilation + interpretation.
+        </div>
+      </div>
+
+      <div class="code-editor-area">
+        <div class="editor-header">
+          <span>🐍 Interactive Code Editor (try Python)</span>
+          <span>⚡ Run your code → see output</span>
+        </div>
+        <textarea id="codeEditor" rows="8" placeholder="Write or modify Python code here..."></textarea>
+        <div class="action-buttons">
+          <button class="btn-run" id="runCodeBtn">▶ Run Code</button>
+          <button class="btn-reset" id="resetCodeBtn">⟳ Reset to Lesson Example</button>
+          <button class="btn-complete" id="completeBtn">✓ Mark Complete</button>
+        </div>
+        <div class="console-label">📟 OUTPUT CONSOLE</div>
+        <div class="console-output" id="consoleOutput">» Ready. Press Run to execute Python code.</div>
+      </div>
+      <div style="margin-top: 1rem; font-size:0.75rem; background:#fff9ef; border-radius:1rem; padding:0.5rem 1rem; color:#a15506;">
+        🧪 Tip: Try editing examples — learn by doing! Challenge Mode gives you coding exercises.
+      </div>
+    </div>
+  </div>
+  <footer>
+    © Faiez Mhamdi — Robotics, AI & Computer Science | Full Python immersion: variables, loops, OOP & beyond.
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+<script>
+  // Expanded lessons with more content
+  const lessons = [
+    { id: "intro", title: "📘 Intro & Python Hybrid", code: `# Python introduction: high-level & bytecode\nprint("Hello! Python is both compiled & interpreted")\nprint("Source -> bytecode -> PVM")\nname = "Guido van Rossum"\nprint(f"Created by {name} in 1991")`, desc: "📌 What is Python? Guido van Rossum, 1991. High-level language = easier dev. Python compiles to bytecode then runs on PVM (hybrid)." },
+    { id: "vars", title: "🔢 Variables & Data Types", code: `# Variables & Data Types in Python\nage = 16          # int\nprice = 19.99     # float\nname = "Faiez"    # str\nis_coding_fun = True  # bool\nprint(f"Name: {name}, Age: {age}, Price: {price}")\nprint(f"Data type of age: {type(age)}")`, desc: "Variables store data. Common types: int, float, str, bool, list, dict, tuple. Python is dynamically typed." },
+    { id: "operators", title: "➕ Operators", code: `# Operators: arithmetic, comparison, logical\na, b = 10, 3\nprint("a + b =", a+b)\nprint("a % b =", a%b)\nprint("a > b :", a>b)\n# logical\ntrue_val = (a > 5) and (b < 5)\nprint("AND operation:", true_val)`, desc: "Arithmetic (+, -, *, /, %, //, **) | Comparison (==, !=, >, <, >=, <=) | Logical (and, or, not)." },
+    { id: "io", title: "⌨️ Input / Output", code: `# Input and output example\nname = input("What's your name? ")\nprint(f"Nice to meet you, {name}!")\n# note: input always returns string. Convert if needed\nage = int(input("Enter your age: "))\nprint(f"In 5 years, you'll be {age+5}")`, desc: "Use print() for output, input() for user interaction. Convert types with int(), float(), str()." },
+    { id: "ifelse", title: "⚡ If/Elif/Else", code: `# Conditional statements\nmarks = 85\nif marks >= 90:\n    grade = "A"\nelif marks >= 75:\n    grade = "B"\nelif marks >= 60:\n    grade = "C"\nelse:\n    grade = "D"\nprint(f"Your grade: {grade}")`, desc: "Control flow: if, elif, else. Use indentation to define blocks." },
+    { id: "loops", title: "🔄 Loops (for / while)", code: `# Loops: for and while\nprint("For loop:")\nfor i in range(1, 6):\n    print(f"iteration {i}")\n\nprint("\\nWhile loop:")\ncount = 0\nwhile count < 3:\n    print(f"count = {count}")\n    count += 1`, desc: "for iterates over sequences, while repeats until condition False. break/continue control flow." },
+    { id: "functions", title: "📦 Functions", code: `# Defining and using functions\ndef greet(name, greeting="Hello"):\n    return f"{greeting}, {name}!"\n\nresult = greet("Alex")\nprint(result)\n\ndef add(a, b):\n    return a + b\n\nprint("Sum of 7+8 =", add(7,8))`, desc: "Functions encapsulate reusable logic. Use def, parameters, return values. Default arguments possible." },
+    { id: "lists_tuples_dicts", title: "📚 Lists, Tuples, Dicts", code: `# Collections\nfruits = ["apple", "banana", "cherry"]  # list (mutable)\ncoordinates = (10, 20)                 # tuple (immutable)\nperson = {"name": "Zara", "age": 22}   # dict\n\nfruits.append("orange")\nprint("List:", fruits)\nprint("Tuple first:", coordinates[0])\nprint("Dict name:", person["name"])`, desc: "List: ordered, mutable. Tuple: ordered, immutable. Dict: key-value pairs." },
+    { id: "strings", title: "✂️ String Manipulation", code: `# powerful string methods\ntext = "  Python Programming  "\nprint("strip:", text.strip())\nprint("upper:", text.upper())\nprint("replace:", text.replace("Python", "Code"))\nwords = "learn,code,create".split(",")\nprint("split:", words)`, desc: "Strings: slicing, .upper(), .lower(), .split(), .join(), f-strings, formatting." },
+    { id: "file_handling", title: "📁 File Handling", code: `# File read/write demo (virtual)\n# writing to a temp file\nwith open("demo.txt", "w") as f:\n    f.write("Python file handling is powerful!\\nSecond line.")\n\nwith open("demo.txt", "r") as f:\n    content = f.read()\n    print("File content:\\n", content)`, desc: "open() with modes 'r', 'w', 'a'. Use with statement for auto close. Read/write text files." },
+    { id: "error_handling", title: "⚠️ Error Handling (try/except)", code: `# Exception handling\ntry:\n    num = int(input("Enter a number: "))\n    result = 10 / num\n    print(f"Result: {result}")\nexcept ValueError:\n    print("Invalid! Please enter a number.")\nexcept ZeroDivisionError:\n    print("Cannot divide by zero!")\nelse:\n    print("successful execution.")`, desc: "try/except catches errors gracefully. Use else/finally for additional control." },
+    { id: "modules_packages", title: "📦 Modules & Packages", code: `# Importing modules\nimport math\nimport random as rd\n\nprint("sqrt(64) =", math.sqrt(64))\nprint("random 1-10:", rd.randint(1,10))\n\n# from keyword\nfrom datetime import datetime\nprint("now:", datetime.now().strftime("%H:%M:%S"))`, desc: "Modules organize code. import module, or from module import function. Create own .py files." },
+    { id: "oop", title: "🧬 OOP (Classes, Inheritance, Polymorphism)", code: `# Object-Oriented Programming\nclass Robot:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        return f"{self.name} says Beep!"\n\nclass AIRobot(Robot):   # Inheritance\n    def speak(self):    # Polymorphism (override)\n        return f"{self.name} with AI: Hello human!"\n\nr1 = Robot("R2D2")\nai = AIRobot("Sophia")\nprint(r1.speak())\nprint(ai.speak())`, desc: "Classes blueprints, __init__ constructor. Inheritance: child class extends parent. Polymorphism: methods behave differently." }
+  ];
+
+  // Challenges for each lesson
+  const challenges = [
+    { id: "intro", title: "💪 Challenge: Print Your Name", code: `# Challenge: Print your name and when you started learning Python\n# Write your code below:\n\nprint("My name is: ")\nprint("I started learning Python in: ")`, solution: "print('My name is: [Your Name]')\nprint('I started learning Python in: 2024')" },
+    { id: "vars", title: "💪 Challenge: Create Variables", code: `# Challenge: Create 3 variables (your age, your favorite color, and a boolean if you like coding)\n# Then print them all\n\n# Your code here:`, solution: "age = 16\nfavorite_color = 'blue'\nloves_coding = True\nprint(age, favorite_color, loves_coding)" }
+  ];
+
+  // DOM elements
+  const topicListDiv = document.getElementById("topicList");
+  const lessonTitleSpan = document.getElementById("lessonTitle");
+  const lessonDescDiv = document.getElementById("lessonDesc");
+  const codeEditor = document.getElementById("codeEditor");
+  const runBtn = document.getElementById("runCodeBtn");
+  const resetBtn = document.getElementById("resetCodeBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const consoleDiv = document.getElementById("consoleOutput");
+  
+  let activeLessonId = "intro";
+  let isChallengeMode = false;
+  let pyodideReady = false;
+  let pyodideInstance = null;
+  let completedLessons = JSON.parse(localStorage.getItem('pythonCompletedLessons') || '[]');
+
+  // Load Pyodide
+  async function loadPyodideAndRun() {
+    if (!pyodideReady) {
+      consoleDiv.innerText = "⏳ Loading Python runtime (Pyodide)... one moment.";
+      try {
+        pyodideInstance = await loadPyodide({
+          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/",
+        });
+        pyodideReady = true;
+        consoleDiv.innerText = "✅ Python ready! Press Run to execute your code.";
+      } catch (err) {
+        consoleDiv.innerText = "❌ Failed to load Python engine. Refresh or check network.\n" + err;
+        return false;
+      }
+    }
+    return true;
+  }
+
+  async function executePython(code) {
+    if (!pyodideReady) {
+      const loaded = await loadPyodideAndRun();
+      if (!loaded) return "⚠️ Python not loaded yet, try again.";
+    }
+    let output = "";
+    try {
+      pyodideInstance.runPython(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+`);
+      await pyodideInstance.runPythonAsync(code);
+      const captured = pyodideInstance.runPython("sys.stdout.getvalue()");
+      output = captured || "(no output)";
+    } catch (err) {
+      output = `ERROR: ${err}`;
+    } finally {
+      pyodideInstance.runPython(`
+sys.stdout = sys.__stdout__
+`);
+    }
+    return output;
+  }
+
+  function updateProgress() {
+    const total = lessons.length;
+    const completed = completedLessons.length;
+    const percent = (completed / total) * 100;
+    document.getElementById('progressBar').style.width = percent + '%';
+    document.getElementById('progressPercent').innerText = Math.round(percent) + '%';
+    document.getElementById('completedCount').innerText = completed;
+    document.getElementById('totalCount').innerText = total;
+    
+    // Save to localStorage
+    localStorage.setItem('pythonCompletedLessons', JSON.stringify(completedLessons));
+  }
+
+  function markLessonComplete() {
+    if (!completedLessons.includes(activeLessonId)) {
+      completedLessons.push(activeLessonId);
+      updateProgress();
+      consoleDiv.innerText = "🎉 Great job! Lesson marked as complete! Keep going!";
+      buildSidebar(); // Refresh sidebar to show completed badges
+    } else {
+      consoleDiv.innerText = "✅ This lesson was already completed!";
+    }
+  }
+
+  function buildSidebar() {
+    topicListDiv.innerHTML = "";
+    lessons.forEach((lesson, idx) => {
+      const btn = document.createElement("button");
+      btn.className = "topic-btn";
+      if (completedLessons.includes(lesson.id)) {
+        btn.classList.add("completed");
+      }
+      if (lesson.id === activeLessonId) btn.classList.add("active");
+      btn.innerHTML = `<span>${lesson.title}</span><span class="badge-lesson">${idx+1}</span>`;
+      btn.addEventListener("click", () => {
+        setActiveLesson(lesson.id);
+      });
+      topicListDiv.appendChild(btn);
+    });
+  }
+
+  function setActiveLesson(lessonId) {
+    activeLessonId = lessonId;
+    const lesson = lessons.find(l => l.id === lessonId);
+    if (lesson) {
+      lessonTitleSpan.innerText = lesson.title;
+      if (!isChallengeMode) {
+        lessonDescDiv.innerText = lesson.desc;
+        codeEditor.value = lesson.code;
+      } else {
+        const challenge = challenges.find(c => c.id === lessonId) || challenges[0];
+        lessonDescDiv.innerText = "🎯 Complete the coding challenge below! Write your solution and click Run to test it.";
+        if (challenge) {
+          codeEditor.value = challenge.code;
+        }
+      }
+      codeEditor.setAttribute("data-default", codeEditor.value);
+      document.querySelectorAll(".topic-btn").forEach((btn, i) => {
+        if (lessons[i].id === lessonId) btn.classList.add("active");
+        else btn.classList.remove("active");
+      });
+    }
+  }
+
+  function resetToCurrentLesson() {
+    const lesson = lessons.find(l => l.id === activeLessonId);
+    if (lesson && !isChallengeMode) {
+      codeEditor.value = lesson.code;
+    } else if (isChallengeMode) {
+      const challenge = challenges.find(c => c.id === activeLessonId) || challenges[0];
+      codeEditor.value = challenge.code;
+    }
+    consoleDiv.innerText = "↻ Reset to original content. Click Run to execute.";
+  }
+
+  async function runUserCode() {
+    const userCode = codeEditor.value;
+    if (!userCode.trim()) {
+      consoleDiv.innerText = "⚠️ No code to execute. Write some Python code!";
+      return;
+    }
+    consoleDiv.innerText = "⏳ Running...";
+    if (!pyodideReady) {
+      await loadPyodideAndRun();
+    }
+    const result = await executePython(userCode);
+    consoleDiv.innerText = result || "(empty output)";
+  }
+
+  function downloadCheatSheet() {
+    const content = `PYTHON CHEAT SHEET
+
+VARIABLES & TYPES
+- int: whole numbers (x = 5)
+- float: decimals (x = 5.5)
+- str: text (x = "hello")
+- bool: True/False
+- list: [1, 2, 3]
+- dict: {"key": "value"}
+
+COMMON METHODS
+- print() - display output
+- len() - get length
+- type() - get data type
+- input() - get user input
+
+CONDITIONALS
+if condition:
+    # code
+elif condition:
+    # code
+else:
+    # code
+
+LOOPS
+for item in list:
+    # code
+while condition:
+    # code
+
+FUNCTIONS
+def function_name(param):
+    return value
+
+Created by Faiez Mhamdi - Python Programming Course`;
+    
+    const blob = new Blob([content], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'python_cheat_sheet.txt';
+    link.click();
+    URL.revokeObjectURL(link.href);
+  }
+
+  function downloadExercises() {
+    const content = `PYTHON PRACTICE EXERCISES
+
+1. Write a program that prints numbers 1 to 10
+2. Create a function that checks if a number is even or odd
+3. Build a simple calculator that adds two numbers
+4. Create a list of 5 fruits and print each one
+5. Write a program that asks for user's age and tells them if they can vote (18+)
+
+BONUS CHALLENGES:
+6. Create a dictionary of 3 friends and their favorite colors
+7. Write a loop that prints the multiplication table of 5
+8. Create a function that returns the largest number in a list
+
+Check your answers by running your code in the interactive editor!
+
+More exercises: Continue practicing daily to master Python!`;
+    
+    const blob = new Blob([content], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'python_exercises.txt';
+    link.click();
+    URL.revokeObjectURL(link.href);
+  }
+
+  function init() {
+    buildSidebar();
+    const firstLesson = lessons[0];
+    activeLessonId = firstLesson.id;
+    lessonTitleSpan.innerText = firstLesson.title;
+    lessonDescDiv.innerText = firstLesson.desc;
+    codeEditor.value = firstLesson.code;
+    codeEditor.setAttribute("data-default", firstLesson.code);
+    updateProgress();
+    
+    loadPyodideAndRun().catch(e => console.warn);
+    
+    runBtn.addEventListener("click", runUserCode);
+    resetBtn.addEventListener("click", resetToCurrentLesson);
+    completeBtn.addEventListener("click", markLessonComplete);
+    
+    document.getElementById('learnModeBtn').addEventListener('click', () => {
+      isChallengeMode = false;
+      document.getElementById('learnModeBtn').classList.add('active');
+      document.getElementById('challengeModeBtn').classList.remove('active');
+      setActiveLesson(activeLessonId);
+    });
+    
+    document.getElementById('challengeModeBtn').addEventListener('click', () => {
+      isChallengeMode = true;
+      document.getElementById('challengeModeBtn').classList.add('active');
+      document.getElementById('learnModeBtn').classList.remove('active');
+      setActiveLesson(activeLessonId);
+    });
+  }
+
+  init();
+</script>
+</body>
+</html>
