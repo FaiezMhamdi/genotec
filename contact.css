@@ -23,14 +23,14 @@
   background: rgba(255, 255, 255, 0.05);
   padding: 30px;
   border-radius: var(--radius);
-  border: 1px solid rgba(31, 143, 255, 0.1);
+  border: 1px solid rgba(0, 203, 190, 0.1);
   transition: all 0.3s ease;
 }
 
 .info-card:hover {
-  border-color: rgba(31, 143, 255, 0.3);
+  border-color: rgba(0, 203, 190, 0.3);
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(31, 143, 255, 0.15);
+  box-shadow: 0 15px 40px rgba(0, 203, 190, 0.15);
 }
 
 .info-header {
@@ -113,14 +113,14 @@
   color: var(--muted);
   text-decoration: none;
   transition: all 0.3s ease;
-  border: 1px solid rgba(31, 143, 255, 0.1);
+  border: 1px solid rgba(0, 203, 190, 0.1);
 }
 
 .social-link:hover {
   background: var(--accent1);
   color: #000;
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(31, 143, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 203, 190, 0.3);
 }
 
 /* Contact Form */
@@ -128,7 +128,7 @@
   background: rgba(255, 255, 255, 0.05);
   padding: 40px;
   border-radius: var(--radius);
-  border: 1px solid rgba(31, 143, 255, 0.1);
+  border: 1px solid rgba(0, 203, 190, 0.1);
   backdrop-filter: blur(10px);
 }
 
@@ -170,8 +170,8 @@
 .form-textarea:focus {
   outline: none;
   border-color: var(--accent1);
-  background: rgba(31, 143, 255, 0.05);
-  box-shadow: 0 0 0 3px rgba(31, 143, 255, 0.1);
+  background: rgba(0, 203, 190, 0.05);
+  box-shadow: 0 0 0 3px rgba(0, 203, 190, 0.1);
 }
 
 .form-input::placeholder,
@@ -224,7 +224,7 @@
 
 .submit-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(31, 143, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 203, 190, 0.4);
 }
 
 .submit-btn:active {
@@ -292,19 +292,19 @@
 .faq-item {
   background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius);
-  border: 1px solid rgba(31, 143, 255, 0.1);
+  border: 1px solid rgba(0, 203, 190, 0.1);
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .faq-item:hover {
-  border-color: rgba(31, 143, 255, 0.3);
+  border-color: rgba(0, 203, 190, 0.3);
   transform: translateY(-5px);
 }
 
 .faq-question {
   padding: 25px;
-  background: rgba(31, 143, 255, 0.05);
+  background: rgba(0, 203, 190, 0.05);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -313,7 +313,7 @@
 }
 
 .faq-question:hover {
-  background: rgba(31, 143, 255, 0.1);
+  background: rgba(0, 203, 190, 0.1);
 }
 
 .faq-question h4 {

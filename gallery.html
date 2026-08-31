@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; script-src 'self'; frame-ancestors 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Gallery — Mectrion | Training Around the World</title>
+  <meta name="description" content="Explore Mectrion's training gallery — workshops across Barcelona, Valencia, Malaga, Lisbon, Milan and Munich." />
+  <link rel="icon" href="mectronicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha384-/o6I2CkkWC//PSjvWC/eYN7l3xM3tJm8ZzVkCOfp//W05QcE3mlGskpoHB6XqI+B" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="enhancements.css" />
+  <link rel="stylesheet" href="gallery.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="floating-bg"></div>
+  <div id="site-header" data-active="gallery"></div>
+  <script src="components.js"></script>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="page-hero gallery-hero section">
+      <div class="page-hero-content">
+        <div class="page-hero-badge">Our Work Around the World</div>
+        <h1>Training Gallery</h1>
+        <p>From Barcelona to Munich — explore our hands-on workshops and training sessions by city.</p>
+      </div>
+    </section>
+
+    <!-- GALLERY SECTION: tabs + grid injected by gallery.js -->
+    <section class="section gallery-section">
+
+      <!-- City tabs — rendered by JS -->
+      <div class="gallery-tabs" id="galleryTabs" role="tablist" aria-label="Gallery cities"></div>
+
+      <!-- Masonry grid — rendered by JS -->
+      <div class="gallery-masonry" id="galleryGrid"></div>
+
+      <!-- Upload CTA -->
+      <div class="gallery-upload-cta">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>Have more photos? Send them to us and we'll add them to the gallery.</p>
+        <a href="contact.html" class="btn btn-primary">
+          <span>Contact Us to Add Photos</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button class="lb-close" aria-label="Close"><i class="fas fa-times"></i></button>
+      <button class="lb-prev"  aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <button class="lb-next"  aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+      <div class="lb-img-wrap">
+        <img id="lbImg" src="" alt="" />
+        <div class="lb-scan"></div>
+      </div>
+      <div class="lb-caption">
+        <span id="lbTitle"></span>
+        <span id="lbLoc"><i class="fas fa-map-marker-alt"></i> <span></span></span>
+      </div>
+      <div class="lb-counter">
+        <span id="lbCurrent">1</span> / <span id="lbTotal">1</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="enhancements.js"></script>
+  <script src="gallery.js"></script>
+</body>
+</html>

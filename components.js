@@ -7,8 +7,10 @@ const Components = {
     navItems: [
         { href: 'index.html', icon: 'fa-home', label: 'Home', key: 'home' },
         { href: 'about.html', icon: 'fa-user', label: 'About', key: 'about' },
-        { href: 'shop.html', icon: 'fa-shopping-cart', label: 'Shop', key: 'shop', badge: true },
-        { href: 'contact.html', icon: 'fa-envelope', label: 'Contact', key: 'contact' }
+        { href: 'services.html', icon: 'fa-envelope', label: 'Services', key: 'Services' },
+        { href: 'shop.html', icon: 'fa-shopping-cart', label: 'Courses', key: 'shop' },
+        { href: 'team.html', icon: 'fa-users', label: 'Team', key: 'team' },  // <-- ADDED TEAM HERE
+        { href: 'gallery.html', icon: 'fa-images', label: 'Gallery', key: 'gallery' }
     ],
 
     socialLinks: [
@@ -18,19 +20,18 @@ const Components = {
     ],
 
     renderNavLink(item, activePage, mobile) {
-        const cls = mobile ? 'mobile-nav-link' : 'nav-link';
+        if (mobile) {
+            const active = item.key === activePage ? ' active' : '';
+            return `<a href="${item.href}" class="mobile-nav-link${active}">
+                <span class="mnl-icon"><i class="fas ${item.icon}"></i></span>
+                <span class="mnl-label">${item.label}</span>
+            </a>`;
+        }
         const active = item.key === activePage ? ' active' : '';
-        const badge = item.badge
-            ? `<span class="cart-badge"${mobile ? '' : ' id="cartCount"'}>0</span>`
-            : '';
-        return `<a href="${item.href}" class="${cls}${active}">
-            <i class="fas ${item.icon}"></i>
-            <span>${item.label}</span>
-            ${badge}
-        </a>`;
+        return `<a href="${item.href}" class="nav-link${active}">${item.label}</a>`;
     },
 
-    renderHeader(activePage, ctaOverride, mobileCtaOverride) {
+    renderHeader(activePage) {
         const desktopNav = this.navItems
             .map(item => this.renderNavLink(item, activePage, false))
             .join('\n          ');
@@ -39,57 +40,79 @@ const Components = {
             .map(item => this.renderNavLink(item, activePage, true))
             .join('\n        ');
 
-        const ctaBtn = ctaOverride ||
-            `<button class="cta-button">
-                <span>Start Learning</span>
-                <i class="fas fa-rocket"></i>
-            </button>`;
+        const ctaBtn = `<a href="contact.html" class="nav-cta">
+                <span>Contact</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>`;
 
-        const mobileCta = mobileCtaOverride ||
-            `<button class="mobile-cta">
+        const mobileCta = `<a href="contact.html" class="mobile-cta">
                 <i class="fas fa-rocket"></i>
-                <span>Start Learning</span>
-            </button>`;
+                <span>Contact</span>
+            </a>`;
 
-        return `<header class="site-header">
+        return `<header class="site-header" id="siteHeader">
     <div class="header-container">
-        <div class="brand">
-            <div class="logo-container">
-                <div class="logo-mark">
-                    <span class="logo-main">F/M</span>
-                    <span class="logo-subtitle">Robotics</span>
-                    <div class="logo-glow"></div>
-                </div>
-                <div class="logo-pulse"></div>
-            </div>
-        </div>
 
+        <!-- Logo -->
+        <a href="index.html" class="nav-logo" aria-label="Mectrion Home">
+            <img class="nav-logo-mark" src="mectronicon.png" alt="" aria-hidden="true">
+            <span class="nav-logo-geno">Mec</span><span class="nav-logo-tec">trion</span>
+        </a>
+
+        <!-- Desktop nav -->
         <nav class="nav" aria-label="Main navigation">
             <div class="nav-links">
                 ${desktopNav}
             </div>
         </nav>
 
-        <div class="header-actions">
+        <!-- CTA + hamburger -->
+        <div class="header-right">
             ${ctaBtn}
+            <button class="mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-
-        <button class="mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </button>
     </div>
 
+    <!-- Mobile drawer -->
     <div class="mobile-menu" role="navigation" aria-label="Mobile navigation">
         <div class="mobile-nav">
             ${mobileNav}
+            <!-- Mobile founders -->
+            <div class="mobile-founders">
+                <p class="mobile-founders-title">Our Founders</p>
+                <div class="mobile-founder">
+                    <div class="founder-avatar sm"><i class="fas fa-user-astronaut"></i></div>
+                    <div><strong>Faiez Mhamdi</strong><span>Co-Founder &amp; Lead Trainer</span></div>
+                </div>
+                <div class="mobile-founder">
+                    <div class="founder-avatar sm" style="--av:#a855f7"><i class="fas fa-user-tie"></i></div>
+                    <div><strong>Hassen Ben Hadj</strong><span>Co-Founder &amp; Partner</span></div>
+                </div>
+            </div>
             ${mobileCta}
         </div>
     </div>
-</header>`;
+</header>
+<script>
+(function(){
+  var hdr = document.getElementById('siteHeader');
+  var tog = hdr && hdr.querySelector('.mobile-toggle');
+  var menu = hdr && hdr.querySelector('.mobile-menu');
+  if(tog && menu){
+    tog.addEventListener('click', function(){
+      var open = menu.classList.toggle('active');
+      tog.setAttribute('aria-expanded', open);
+      tog.classList.toggle('open', open);
+    });
+  }
+  // Team dropdown removed - no longer needed
+  window.addEventListener('scroll', function(){
+    if(hdr) hdr.classList.toggle('scrolled', window.scrollY > 40);
+  });
+})();
+</script>`;
     },
 
     renderFooter(linkGroups) {
@@ -99,7 +122,10 @@ const Components = {
                 links: [
                     { href: 'index.html', text: 'Home' },
                     { href: 'about.html', text: 'About' },
+                    { href: 'services.html', text: 'Services' },
+                    { href: 'gallery.html', text: 'Gallery' },
                     { href: 'shop.html', text: 'Shop' },
+                    { href: 'team.html', text: 'Team' },  // <-- ADDED TEAM HERE TOO
                     { href: 'contact.html', text: 'Contact' }
                 ]
             },
@@ -151,7 +177,7 @@ const Components = {
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <span id="year"></span> Faiez Mhamdi &mdash; All rights reserved</p>
+            <p>&copy; <span id="year"></span> Mectrion &mdash; All rights reserved</p>
             <div class="socials">
                 ${socialsHtml}
             </div>
@@ -168,27 +194,11 @@ const Components = {
 </div>`;
     },
 
-    ctaPresets: {
-        cart: {
-            desktop: `<button class="cta-button" id="viewCartBtn">
-                <span>View Cart</span>
-                <i class="fas fa-shopping-cart"></i>
-            </button>`,
-            mobile: `<button class="mobile-cta" id="mobileViewCart">
-                <i class="fas fa-shopping-cart"></i>
-                <span>View Cart</span>
-            </button>`
-        }
-    },
-
     inject() {
         const headerEl = document.getElementById('site-header');
         if (headerEl) {
             const activePage = headerEl.dataset.active || '';
-            const preset = this.ctaPresets[headerEl.dataset.cta];
-            const ctaOverride = preset ? preset.desktop : null;
-            const mobileCta = preset ? preset.mobile : null;
-            headerEl.outerHTML = this.renderHeader(activePage, ctaOverride, mobileCta);
+            headerEl.outerHTML = this.renderHeader(activePage);
         }
 
         const footerEl = document.getElementById('site-footer');

@@ -5,7 +5,7 @@ const Enhancements = {
 
   // ─── Typed Text Effect ───────────────────────────────────────────
   typedText: {
-    words: ['Robotics & AI', 'Python & Code', 'Innovation', 'Technology'],
+    words: ['Robotics & AI', 'Programming', 'Innovation', 'Technology'],
     el: null,
     wordIndex: 0,
     charIndex: 0,
@@ -48,6 +48,15 @@ const Enhancements = {
         section.classList.add('scroll-reveal');
       });
 
+      // Reveal when ANY part of the section enters the viewport.
+      // threshold 0 (not 0.1): very tall sections (e.g. the mobile
+      // single-column gallery) can never reach 10% visibility, which
+      // previously left them permanently invisible on phones.
+      if (!('IntersectionObserver' in window)) {
+        sections.forEach(s => s.classList.add('revealed'));
+        return;
+      }
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -55,7 +64,7 @@ const Enhancements = {
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
       sections.forEach(section => observer.observe(section));
     }
@@ -127,7 +136,7 @@ const Enhancements = {
         // Draw particle
         this.ctx.beginPath();
         this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        this.ctx.fillStyle = `rgba(31, 143, 255, ${p.opacity})`;
+        this.ctx.fillStyle = `rgba(0, 203, 190, ${p.opacity})`;
         this.ctx.fill();
 
         // Draw connections
@@ -141,7 +150,7 @@ const Enhancements = {
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(p2.x, p2.y);
-            this.ctx.strokeStyle = `rgba(31, 143, 255, ${0.15 * (1 - dist / 120)})`;
+            this.ctx.strokeStyle = `rgba(0, 203, 190, ${0.15 * (1 - dist / 120)})`;
             this.ctx.lineWidth = 0.5;
             this.ctx.stroke();
           }
@@ -192,8 +201,25 @@ const Enhancements = {
       loader.id = 'preloader';
       loader.innerHTML = `
         <div class="preloader-content">
-          <div class="preloader-logo">F/M</div>
-          <div class="preloader-bar"><div class="preloader-progress"></div></div>
+          <div class="preloader-circuit">
+            <div class="circuit-line cl-1"></div>
+            <div class="circuit-line cl-2"></div>
+            <div class="circuit-line cl-3"></div>
+            <div class="circuit-dot cd-1"></div>
+            <div class="circuit-dot cd-2"></div>
+            <div class="circuit-dot cd-3"></div>
+          </div>
+          <div class="preloader-brand">
+            <div class="preloader-logo">
+              <span class="pl-geno">Mec</span><span class="pl-tec">trion</span>
+            </div>
+            <div class="preloader-tagline">Generation of Technology</div>
+          </div>
+          <div class="preloader-bar">
+            <div class="preloader-progress"></div>
+            <div class="preloader-glow"></div>
+          </div>
+          <div class="preloader-status">Initializing systems<span class="pl-dots">...</span></div>
         </div>
       `;
       document.body.prepend(loader);
@@ -201,8 +227,8 @@ const Enhancements = {
       window.addEventListener('load', () => {
         setTimeout(() => {
           loader.classList.add('loaded');
-          setTimeout(() => loader.remove(), 600);
-        }, 800);
+          setTimeout(() => loader.remove(), 700);
+        }, 900);
       });
     }
   },

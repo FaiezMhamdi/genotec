@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.googleapis.com; script-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; script-src 'self' https://cdnjs.cloudflare.com; connect-src 'self';" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <title>GenoTec - Generation of Technology | Erasmus Training & Educational Robotics</title>
-  <meta name="description" content="GenoTec: Generation of Technology. Specialized in Erasmus student training with robotics workshops, CNC machines, 3D printing, coding, embedded systems, IoT, and drones." />
+  <title>Mectrion | Erasmus Training & Educational Robotics</title>
+  <meta name="description" content="Mectrion specializes in Erasmus student training with robotics workshops, CNC machines, 3D printing, coding, embedded systems, IoT, and drones. Educational robots for schools and training centers." />
   <meta name="keywords" content="robotics, CNC, 3D printing, coding, embedded systems, IoT, drones, education, Erasmus, training, educational robots, workshops, technology" />
-  <meta name="author" content="GenoTec - Generation of Technology" />
+  <meta name="author" content="Mectrion" />
 
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="GenoTec - Generation of Technology" />
+  <meta property="og:title" content="Mectrion | Erasmus Training & Educational Robotics" />
   <meta property="og:description" content="Specialized in Erasmus training: robotics, CNC, 3D printing, coding, IoT, and educational robots." />
   <meta property="og:image" content="icon.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="GenoTec - Generation of Technology" />
+  <meta name="twitter:title" content="Mectrion | Erasmus Training & Educational Robotics" />
   <meta name="twitter:description" content="Erasmus training in robotics, CNC, 3D printing, coding, and educational technology." />
 
-  <link rel="icon" href="11111.png" type="image/png" />
+  <link rel="icon" href="mectronicon.png" type="image/png" />
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
@@ -44,24 +44,23 @@
   <section class="hero">
     <div class="hero-gradient"></div>
     <video autoplay muted loop playsinline class="hero-bg">
-      <source src="homevideo.mp4" type="video/mp4" />
+      <source src="BACKGROUND1.mp4" type="video/mp4" />
     </video>
     <div class="hero-content">
       <div class="hero-badge">Erasmus Training Program</div>
       <h1 class="hero-title">
-        <span class="title-line">GenoTec: Generation of</span>
-        <span class="title-highlight" id="typed-text">Technology</span>
+        <span class="title-line">Mectrion</span>
       </h1>
       <p class="hero-subtitle">Transforming ideas into reality through hands-on training in robotics, CNC, 3D printing, coding, and embedded systems.</p>
       <div class="hero-actions">
-        <button class="btn btn-primary">
+        <a href="#services" class="btn btn-primary">
           <span>Explore Programs</span>
           <i class="fas fa-arrow-right"></i>
-        </button>
-        <button class="btn btn-secondary">
+        </a>
+        <a href="gallery.html" class="btn btn-secondary">
           <i class="fas fa-play"></i>
           Watch Our Work
-        </button>
+        </a>
       </div>
     </div>
     <div class="scroll-indicator">
@@ -69,10 +68,199 @@
     </div>
   </section>
 
+  <!-- OUR SERVICES SECTION — futuristic cyan/teal Mectrion theme -->
+  <section id="services" class="services section services-redesign">
+    <div class="sec-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+    <!-- Section header with Mectrion emblem -->
+    <div class="section-header mctr-header">
+      <div class="mctr-emblem">
+        <img src="mectronicon.png" alt="Mectrion" />
+        <div class="mctr-orbit"></div>
+      </div>
+      <div class="section-eyebrow"><span class="eyebrow-dot"></span> Mectrion Training Matrix</div>
+      <h2>Our <span class="grad-text">Training</span> Services</h2>
+      <p class="section-subtitle">Hands-on, industry-grade programs built for Erasmus students and educational institutions</p>
+    </div>
+
+    <div class="services-grid-new">
+
+      <!-- Card 1 -->
+      <div class="svc-card" style="--acc: #48f0ff; --acc2: #00a6c0; --chip: rgba(25,224,255,0.10);">
+        <div class="svc-scan"></div>
+        <div class="svc-grid" aria-hidden="true"></div>
+        <div class="svc-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="svc-hud">
+          <span class="hud-led"></span>
+          <span class="hud-tag">UNIT 01</span>
+          <span class="hud-id">ROB-01</span>
+        </div>
+        <div class="svc-qr" aria-hidden="true">MCTR.IO-01</div>
+        <div class="svc-icon-wrap">
+          <i class="fa-solid fa-robot"></i>
+          <div class="svc-icon-ring"></div>
+        </div>
+        <div class="svc-badge">Most Popular</div>
+        <h3>Robotics Workshops</h3>
+        <p>Hands-on training in robot design, programming, and control systems — from basic bots to fully autonomous machines.</p>
+        <div class="svc-chips">
+          <span class="chip">Mobile Robotics</span>
+          <span class="chip">Robot Programming</span>
+          <span class="chip">Sensor Integration</span>
+          <span class="chip">Autonomous Systems</span>
+        </div>
+        <div class="svc-footer">
+          <a href="contact.html" class="svc-cta">Initiate Module <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="svc-card" style="--acc: #22d3ee; --acc2: #0e8ba0; --chip: rgba(34,211,238,0.10);">
+        <div class="svc-scan"></div>
+        <div class="svc-grid" aria-hidden="true"></div>
+        <div class="svc-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="svc-hud">
+          <span class="hud-led"></span>
+          <span class="hud-tag">UNIT 01</span>
+          <span class="hud-id">CNC-02</span>
+        </div>
+        <div class="svc-qr" aria-hidden="true">MCTR.IO-02</div>
+        <div class="svc-icon-wrap">
+          <i class="fa-solid fa-microchip"></i>
+          <div class="svc-icon-ring"></div>
+        </div>
+        <h3>CNC Machining</h3>
+        <p>Professional CNC training — learn to program, operate, and design precision parts with real industrial equipment.</p>
+        <div class="svc-chips">
+          <span class="chip">CNC Programming</span>
+          <span class="chip">Precision Machining</span>
+          <span class="chip">Design for Mfg.</span>
+          <span class="chip">Material Selection</span>
+        </div>
+        <div class="svc-footer">
+          <a href="contact.html" class="svc-cta">Initiate Module <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="svc-card" style="--acc: #35e3c0; --acc2: #0d9a80; --chip: rgba(53,227,192,0.10);">
+        <div class="svc-scan"></div>
+        <div class="svc-grid" aria-hidden="true"></div>
+        <div class="svc-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="svc-hud">
+          <span class="hud-led"></span>
+          <span class="hud-tag">UNIT 02</span>
+          <span class="hud-id">CAD-03</span>
+        </div>
+        <div class="svc-qr" aria-hidden="true">MCTR.IO-03</div>
+        <div class="svc-icon-wrap">
+          <i class="fa-solid fa-cube"></i>
+          <div class="svc-icon-ring"></div>
+        </div>
+        <h3>3D Printing &amp; Design</h3>
+        <p>From CAD concept to production-ready prototype — master the full 3D design and printing workflow.</p>
+        <div class="svc-chips">
+          <span class="chip">3D CAD Design</span>
+          <span class="chip">FDM / Resin</span>
+          <span class="chip">Rapid Prototyping</span>
+          <span class="chip">Post-Processing</span>
+        </div>
+        <div class="svc-footer">
+          <a href="contact.html" class="svc-cta">Initiate Module <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="svc-card" style="--acc: #34d9ff; --acc2: #0a7fbc; --chip: rgba(52,217,255,0.10);">
+        <div class="svc-scan"></div>
+        <div class="svc-grid" aria-hidden="true"></div>
+        <div class="svc-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="svc-hud">
+          <span class="hud-led"></span>
+          <span class="hud-tag">UNIT 03</span>
+          <span class="hud-id">COD-04</span>
+        </div>
+        <div class="svc-qr" aria-hidden="true">MCTR.IO-04</div>
+        <div class="svc-icon-wrap">
+          <i class="fa-solid fa-code"></i>
+          <div class="svc-icon-ring"></div>
+        </div>
+        <h3>Coding &amp; Programming</h3>
+        <p>From Python fundamentals to embedded C/C++ — build the programming skills that power modern robotics and IoT.</p>
+        <div class="svc-chips">
+          <span class="chip">Python</span>
+          <span class="chip">C / C++</span>
+          <span class="chip">Real-time Systems</span>
+          <span class="chip">Algorithm Design</span>
+        </div>
+        <div class="svc-footer">
+          <a href="contact.html" class="svc-cta">Initiate Module <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="svc-card" style="--acc: #26f0d6; --acc2: #0b9c8c; --chip: rgba(38,240,214,0.10);">
+        <div class="svc-scan"></div>
+        <div class="svc-grid" aria-hidden="true"></div>
+        <div class="svc-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="svc-hud">
+          <span class="hud-led"></span>
+          <span class="hud-tag">UNIT 04</span>
+          <span class="hud-id">IOT-05</span>
+        </div>
+        <div class="svc-qr" aria-hidden="true">MCT.IO-05</div>
+        <div class="svc-icon-wrap">
+          <i class="fa-solid fa-wifi"></i>
+          <div class="svc-icon-ring"></div>
+        </div>
+        <h3>Embedded Systems &amp; IoT</h3>
+        <p>Build smart connected devices — learn microcontroller programming, sensor networks, and cloud integration.</p>
+        <div class="svc-chips">
+          <span class="chip">Arduino</span>
+          <span class="chip">IoT Protocols</span>
+          <span class="chip">Sensor Networks</span>
+          <span class="chip">Cloud Integration</span>
+        </div>
+        <div class="svc-footer">
+          <a href="contact.html" class="svc-cta">Initiate Module <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="svc-card" style="--acc: #2be6ff; --acc2: #0b8fd0; --chip: rgba(43,230,255,0.10);">
+        <div class="svc-scan"></div>
+        <div class="svc-grid" aria-hidden="true"></div>
+        <div class="svc-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="svc-hud">
+          <span class="hud-led"></span>
+          <span class="hud-tag">UNIT 05</span>
+          <span class="hud-id">UAV-06</span>
+        </div>
+        <div class="svc-qr" aria-hidden="true">MCT.IO-06</div>
+        <div class="svc-icon-wrap">
+          <i class="fa-solid fa-paper-plane"></i>
+          <div class="svc-icon-ring"></div>
+        </div>
+        <h3>Drones &amp; UAV</h3>
+        <p>Assemble, program, and fly autonomous drones — from hardware basics to mission planning and aerial applications.</p>
+        <div class="svc-chips">
+          <span class="chip">Drone Assembly</span>
+          <span class="chip">Flight Programming</span>
+          <span class="chip">Autonomous Missions</span>
+          <span class="chip">App Development</span>
+        </div>
+        <div class="svc-footer">
+          <a href="contact.html" class="svc-cta">Initiate Module <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ENHANCED FEATURES SECTION -->
   <section class="features section">
     <div class="section-header">
-      <h2>Why Choose GenoTec?</h2>
+      <h2>Why Choose Mectrion?</h2>
       <p class="section-subtitle">Cutting-edge technology training for Erasmus students and educational institutions</p>
     </div>
     <div class="features-grid">
@@ -106,106 +294,13 @@
     </div>
   </section>
 
-  <!-- OUR SERVICES SECTION -->
-  <section class="services section">
-    <div class="section-header">
-      <h2>Our Services</h2>
-      <p class="section-subtitle">Comprehensive technology training and solutions</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-robot"></i>
-        </div>
-        <h3>Robotics Workshops</h3>
-        <p>Hands-on training in robot design, programming, and control systems. From basic robots to advanced autonomous systems.</p>
-        <ul class="service-list">
-          <li>Mobile Robotics</li>
-          <li>Robot Programming</li>
-          <li>Sensor Integration</li>
-          <li>Autonomous Systems</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-microchip"></i>
-        </div>
-        <h3>CNC Machining</h3>
-        <p>Learn computer numerical control machining with professional CNC equipment. Create precision parts and understand manufacturing.</p>
-        <ul class="service-list">
-          <li>CNC Programming</li>
-          <li>Precision Machining</li>
-          <li>Design for Manufacturing</li>
-          <li>Material Selection</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-cube"></i>
-        </div>
-        <h3>3D Printing & Design</h3>
-        <p>Master 3D design and printing technology. From CAD to production-ready parts using modern 3D printing systems.</p>
-        <ul class="service-list">
-          <li>3D CAD Design</li>
-          <li>3D Printing</li>
-          <li>Prototyping</li>
-          <li>Post-Processing</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-code"></i>
-        </div>
-        <h3>Coding & Programming</h3>
-        <p>Comprehensive coding courses from Python to embedded systems programming for robotics and IoT applications.</p>
-        <ul class="service-list">
-          <li>Python Programming</li>
-          <li>C/C++ for Embedded</li>
-          <li>Real-time Systems</li>
-          <li>Algorithm Design</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-microchip"></i>
-        </div>
-        <h3>Embedded Systems & IoT</h3>
-        <p>Build smart devices and Internet of Things solutions. Learn microcontroller programming and connectivity protocols.</p>
-        <ul class="service-list">
-          <li>Arduino & Microcontrollers</li>
-          <li>IoT Protocols</li>
-          <li>Sensor Networks</li>
-          <li>Cloud Integration</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-drone"></i>
-        </div>
-        <h3>Drones & UAV</h3>
-        <p>Training in drone technology, programming, and aerial applications. Build and fly autonomous unmanned systems.</p>
-        <ul class="service-list">
-          <li>Drone Assembly</li>
-          <li>Flight Programming</li>
-          <li>Autonomous Missions</li>
-          <li>Application Development</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
 <!-- MODERN ABOUT PREVIEW -->
 <section class="about-preview section">
   <div class="about-container">
     <div class="about-visual">
       <div class="image-container">
         <div class="circular-frame">
-          <img src="1111.JPG" alt="GenoTec Team" loading="lazy" class="about-img" />
+          <img src="mectronicon.png" alt="Mectrion Team" loading="lazy" class="about-img" />
           <div class="frame-glow"></div>
         </div>
         <div class="floating-tech">
@@ -222,11 +317,18 @@
       </div>
     </div>
     <div class="about-text">
-      <div class="section-badge">About GenoTec</div>
-      <h2>Generation of Technology</h2>
-      <p>GenoTec is dedicated to empowering the next generation of engineers and technologists. We specialize in providing comprehensive training and educational solutions through innovative robotics and technology programs.</p>
+      <div class="section-badge">About Mectrion</div>
+      <h2>Empowering the Next Generation</h2>
+      <p>Mectrion is dedicated to empowering the next generation of engineers and technologists. 
+        We specialize in providing comprehensive training and educational
+         solutions through innovative robotics workshops, 
+         advanced manufacturing technologies, and embedded systems education. 
+         Our mission is to bridge the gap between theoretical 
+         knowledge and practical industrial application.</p>
       
-      <p>Focused on Erasmus student training, we offer flexible, internationally-recognized programs that prepare young professionals for careers in technology, robotics, and innovation.</p>
+      <p>Focused on Erasmus student training, we offer flexible,
+         internationally-recognized programs that prepare young professionals
+          for careers in technology, robotics, and innovation.</p>
       
       <div class="skills-showcase">
         <div class="skill">
@@ -327,7 +429,8 @@
         </div>
         <div class="card-content">
           <h3>Educational Robots</h3>
-          <p>Supply and support for educational robotics kits and systems. Open days in schools, demonstrations, and training for educators and students.</p>
+          <p>Supply and support for educational robotics kits and systems. Open days in schools,
+             demonstrations, and training for educators and students.</p>
           <div class="course-features">
             <span class="course-feature">K-12 Robots</span>
             <span class="course-feature">Open Days</span>
@@ -339,37 +442,132 @@
     </div>
   </section>
 
-  <!-- ENHANCED PROJECTS GALLERY -->
-  <section class="gallery section">
-    <div class="section-header">
-      <h2>Student Projects & Installations</h2>
-      <p class="section-subtitle">See what our students and schools have achieved</p>
+  <!-- GALLERY PREVIEW on homepage — one real photo per city -->
+  <section id="gallery" class="gallery-preview section">
+    <div class="gallery-preview-grid gp-six" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto;">
+
+      <a href="gallery.html?cat=barcelona" class="gp-card" style="--gp-clr:#00c9a7">
+        <div class="gp-img-wrap">
+          <img src="B5.jpg" alt="Barcelona training" loading="lazy" width="300" height="200" />
+          <div class="gp-tint"></div>
+          <div class="gp-scan"></div>
+        </div>
+        <div class="gp-corner tl"></div>
+        <div class="gp-corner tr"></div>
+        <div class="gp-corner bl"></div>
+        <div class="gp-corner br"></div>
+        <div class="gp-label">
+          <div class="gp-label-left">
+            <span class="gp-city-name"><i class="fas fa-city"></i> Barcelona <span class="gp-flag">🇪🇸</span></span>
+            <span class="gp-city-sub">Spain </span>
+          </div>
+          <span class="gp-count"></span>
+        </div>
+      </a>
+    
+      <a href="gallery.html?cat=valencia" class="gp-card" style="--gp-clr:#f59e0b">
+        <div class="gp-img-wrap">
+          <img src="V3.jpeg" alt="Valencia training" loading="lazy" width="300" height="200"  />
+          <div class="gp-tint"></div>
+          <div class="gp-scan"></div>
+        </div>
+        <div class="gp-corner tl"></div>
+        <div class="gp-corner tr"></div>
+        <div class="gp-corner bl"></div>
+        <div class="gp-corner br"></div>
+        <div class="gp-label">
+          <div class="gp-label-left">
+            <span class="gp-city-name"><i class="fas fa-sun"></i> Valencia <span class="gp-flag">🇪🇸</span></span>
+            <span class="gp-city-sub">Spain </span>
+          </div>
+          <span class="gp-count"></span>
+        </div>
+      </a>
+    
+      <a href="gallery.html?cat=malaga" class="gp-card" style="--gp-clr:#22c55e">
+        <div class="gp-img-wrap">
+          <img src="M2.jpeg" alt="Malaga training" loading="lazy" width="300" height="200"  />
+          <div class="gp-tint"></div>
+          <div class="gp-scan"></div>
+        </div>
+        <div class="gp-corner tl"></div>
+        <div class="gp-corner tr"></div>
+        <div class="gp-corner bl"></div>
+        <div class="gp-corner br"></div>
+        <div class="gp-label">
+          <div class="gp-label-left">
+            <span class="gp-city-name"><i class="fas fa-umbrella-beach"></i> Malaga <span class="gp-flag">🇪🇸</span></span>
+            <span class="gp-city-sub">Spain </span>
+          </div>
+          <span class="gp-count"></span>
+        </div>
+      </a>
+    
+      <a href="gallery.html?cat=lisbon" class="gp-card" style="--gp-clr:#a855f7">
+        <div class="gp-img-wrap">
+          <img src="L1.jpeg" alt="Lisbon training" loading="lazy" width="300" height="200" />
+          <div class="gp-tint"></div>
+          <div class="gp-scan"></div>
+        </div>
+        <div class="gp-corner tl"></div>
+        <div class="gp-corner tr"></div>
+        <div class="gp-corner bl"></div>
+        <div class="gp-corner br"></div>
+        <div class="gp-label">
+          <div class="gp-label-left">
+            <span class="gp-city-name"><i class="fas fa-landmark"></i> Lisbon <span class="gp-flag">🇵🇹</span></span>
+            <span class="gp-city-sub">Portugal </span>
+          </div>
+          <span class="gp-count"></span>
+        </div>
+      </a>
+    
+      <a href="gallery.html?cat=milan" class="gp-card" style="--gp-clr:#ef4444">
+        <div class="gp-img-wrap">
+          <img src="MI1.jpeg" alt="Milan training" loading="lazy" width="300" height="200" />
+          <div class="gp-tint"></div>
+          <div class="gp-scan"></div>
+        </div>
+        <div class="gp-corner tl"></div>
+        <div class="gp-corner tr"></div>
+        <div class="gp-corner bl"></div>
+        <div class="gp-corner br"></div>
+        <div class="gp-label">
+          <div class="gp-label-left">
+            <span class="gp-city-name"><i class="fas fa-building"></i> Milan <span class="gp-flag">🇮🇹</span></span>
+            <span class="gp-city-sub">Italy </span>
+          </div>
+          <span class="gp-count"></span>
+        </div>
+      </a>
+    
+      <a href="gallery.html?cat=munich" class="gp-card" style="--gp-clr:#35e8ff">
+        <div class="gp-img-wrap">
+          <img src="MU1.jpeg" alt="Munich training" loading="lazy" width="300" height="200" />
+          <div class="gp-tint"></div>
+          <div class="gp-scan"></div>
+        </div>
+        <div class="gp-corner tl"></div>
+        <div class="gp-corner tr"></div>
+        <div class="gp-corner bl"></div>
+        <div class="gp-corner br"></div>
+        <div class="gp-label">
+          <div class="gp-label-left">
+            <span class="gp-city-name"><i class="fas fa-beer"></i> Munich <span class="gp-flag">🇩🇪</span></span>
+            <span class="gp-city-sub">Germany </span>
+          </div>
+          <span class="gp-count"></span>
+        </div>
+      </a>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="pic5.webp" alt="Autonomous Robot" loading="lazy"/>
-        <div class="gallery-overlay">
-          <h4>Autonomous Robot</h4>
-          <p>Student-built autonomous navigation system</p>
-          <button class="btn btn-sm">View Project</button>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="pic6.webp" alt="CNC Production" loading="lazy"/>
-        <div class="gallery-overlay">
-          <h4>CNC Precision Parts</h4>
-          <p>Advanced machining workshop results</p>
-          <button class="btn btn-sm">View Project</button>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="pic7.webp" alt="3D Printing" loading="lazy"/>
-        <div class="gallery-overlay">
-          <h4>3D Printed Prototypes</h4>
-          <p>Design to production workflow</p>
-          <button class="btn btn-sm">View Project</button>
-        </div>
-      </div>
+
+
+
+    <div style="text-align:center;margin-top:48px">
+      <a href="gallery.html" class="btn btn-primary">
+        <span>View Full Gallery</span>
+        <i class="fas fa-images"></i>
+      </a>
     </div>
   </section>
 
@@ -378,7 +576,7 @@
     <div class="video-container">
       <div class="video-content">
         <h2>Training in Action</h2>
-        <p>Watch how GenoTec transforms students into skilled technologists and innovators</p>
+        <p>Watch how Mectrion transforms students into skilled technologists and innovators</p>
       </div>
       <div class="video-wrapper">
         <video width="800" autoplay muted loop playsinline>
@@ -392,11 +590,131 @@
     </div>
   </section>
 
+  <!-- PARTNERS & TOOLS SECTION -->
+  <section class="section partners-section">
+    <div class="section-header">
+      <div class="section-eyebrow">Trusted By &amp; Built With</div>
+      <h2>Partners &amp; Technologies</h2>
+      <p class="section-subtitle">The organisations we work with and the tools we teach</p>
+    </div>
+
+    <!-- Partner highlight -->
+    <div class="partner-highlight">
+      <div class="ph-badge"><i class="fas fa-handshake"></i> Official Partner</div>
+      <img src="logoUniversalMobility.jpg" alt="Universal Mobility" class="ph-logo" />
+      <div class="ph-text">
+        <h3>Universal Mobility</h3>
+        <p>Our strategic Erasmus mobility partner, enabling international student placements and cross-border training programmes across Europe.</p>
+      </div>
+    </div>
+
+    <!-- Recognised by -->
+    <div class="partners-row">
+      <div class="partners-col">
+        <p class="partners-col-label"><i class="fas fa-award"></i> Recognised By</p>
+        <div class="logo-pills">
+          <div class="logo-pill">
+            <img src="logoErasmus+.png" alt="Erasmus+" />
+            <span>Erasmus+</span>
+          </div>
+          <div class="logo-pill">
+            <img src="logoeu.jpg" alt="European Union" />
+            <span>European Union</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="partners-divider"></div>
+
+      <div class="partners-col">
+        <p class="partners-col-label"><i class="fas fa-laptop-code"></i> Technologies We Teach</p>
+        <div class="logo-pills">
+          <div class="logo-pill">
+            <img src="logopython.png" alt="Python" />
+            <span>Python</span>
+          </div>
+          <div class="logo-pill">
+            <img src="logoarduino.png" alt="Arduino" />
+            <span>Arduino</span>
+          </div>
+          <div class="logo-pill">
+            <img src="logoraspberry.png" alt="Raspberry Pi" />
+            <span>Raspberry Pi</span>
+          </div>
+          <div class="logo-pill">
+            <img src="logovscode.png" alt="VS Code" />
+            <span>VS Code</span>
+          </div>
+          <div class="logo-pill">
+            <img src="logosolidworks.jpg" alt="SolidWorks" />
+            <span>SolidWorks</span>
+          </div>
+          <div class="logo-pill">
+            <img src="logoartcam.jpg" alt="ArtCAM" />
+            <span>ArtCAM</span>
+          </div>
+          <div class="logo-pill">
+            <img src="logoThonny.png" alt="Thonny" />
+            <span>Thonny</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDERS SECTION -->
+  <section class="section founders-section">
+    <div class="section-header">
+      <div class="section-eyebrow">The People Behind Mectrion</div>
+      <h2>Meet Our Founders</h2>
+      <p class="section-subtitle">Passionate educators and engineers shaping the next generation of technologists</p>
+    </div>
+    <div class="founders-grid">
+
+      <div class="founder-full-card">
+        <div class="ffc-glow" style="--fc:#00c9a7"></div>
+        <div class="ffc-avatar" style="--fc:#00c9a7">
+          <i class="fas fa-user-astronaut"></i>
+        </div>
+        <div class="ffc-body">
+          <h3>Faiez Mhamdi</h3>
+          <span class="ffc-role">Co-Founder &amp; Lead Trainer</span>
+          <div class="ffc-tags">
+            <span>Robotics</span><span>AI &amp; ML</span><span>Python</span><span>Embedded Systems</span>
+          </div>
+          <div class="ffc-socials">
+            <a href="https://www.linkedin.com/in/faiez-mhamdi-b2105b191/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/FaiezMhamdi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/@CyBoRobotica/featured" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="founder-full-card">
+        <div class="ffc-glow" style="--fc:#a855f7"></div>
+        <div class="ffc-avatar" style="--fc:#a855f7">
+          <i class="fas fa-user-tie"></i>
+        </div>
+        <div class="ffc-body">
+          <h3>Hassen Ben Hadj</h3>
+          <span class="ffc-role">Co-Founder &amp; Lead Trainer</span>
+          <div class="ffc-tags">
+            <span>Design</span><span>Erasmus Mobility</span><span>Partnerships</span>
+          </div>
+          <div class="ffc-socials">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- CTA SECTION -->
   <section class="cta-section">
     <div class="cta-content">
       <h2>Ready to Transform Your Career?</h2>
-      <p>Join hundreds of Erasmus students and educational institutions learning cutting-edge technology with GenoTec</p>
+      <p>Join hundreds of Erasmus students and educational institutions learning cutting-edge technology with Mectrion</p>
       <div class="cta-actions">
         <button class="btn btn-primary btn-large">
           <span>Enroll in a Program</span>

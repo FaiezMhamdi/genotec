@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://via.placeholder.com data:; media-src 'self'; script-src 'self'; frame-ancestors 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://via.placeholder.com data:; media-src 'self'; script-src 'self'; connect-src 'self' https://formsubmit.co; frame-ancestors 'self';" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <title>Contact — Faiez Mhamdi | Robotics & AI Education</title>
-  <meta name="description" content="Get in touch with Faiez Mhamdi for robotics and AI education inquiries, Erasmus formation programs, course information, or collaboration opportunities." />
-  <meta name="author" content="Faiez Mhamdi" />
+  <title>Contact — Mectrion | Robotics & AI Education</title>
+  <meta name="description" content="Get in touch with Mectrion for robotics and AI education inquiries, Erasmus formation programs, course information, or collaboration opportunities." />
+  <meta name="author" content="Mectrion" />
 
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Contact — Faiez Mhamdi | Robotics & AI Education" />
+  <meta property="og:title" content="Contact — Mectrion | Robotics & AI Education" />
   <meta property="og:description" content="Get in touch for robotics and AI education inquiries, Erasmus formation programs, or collaboration opportunities." />
   <meta property="og:image" content="icon.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Contact — Faiez Mhamdi | Robotics & AI Education" />
-  <meta name="twitter:description" content="Contact Faiez Mhamdi for education inquiries and collaboration." />
+  <meta name="twitter:title" content="Contact — Mectrion | Robotics & AI Education" />
+  <meta name="twitter:description" content="Contact Mectrion for education inquiries and collaboration." />
 
-  <link rel="icon" href="11111.png" type="image/png" />
+  <link rel="icon" href="mectronicon.png" type="image/png" />
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
@@ -78,7 +78,21 @@
               <i class="fas fa-envelope"></i>
               <div>
                 <strong>Email</strong>
-                <a href="mailto:faiez@fmrobotics.com">faiezmhamdi5@gmail.com</a>
+                <a href="mailto:faiezmhamdi5@gmail.com">faiezmhamdi5@gmail.com</a>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+34672458752">+34 672 458 752</a>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fab fa-whatsapp"></i>
+              <div>
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/34672458752" target="_blank" rel="noopener">+34 672 458 752</a>
               </div>
             </div>
             <div class="info-item">
@@ -92,7 +106,7 @@
               <i class="fas fa-comments"></i>
               <div>
                 <strong>Preferred Method</strong>
-                <span>Email for detailed inquiries</span>
+                <span>Email or WhatsApp for detailed inquiries</span>
               </div>
             </div>
           </div>
@@ -166,42 +180,40 @@
       <!-- Contact Form -->
       <div class="contact-form-container" id="contact-form">
         <h2>Send Me a Message</h2>
-        
-        <div class="success-message" id="successMessage">
-          <i class="fas fa-check-circle"></i>
-          <p>Thank you! Your message has been sent successfully. I'll get back to you within 24 hours.</p>
-        </div>
 
-        <form id="contactForm">
+        <form id="contactForm" action="https://formsubmit.co/faiezmhamdi5@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Mectrion Contact Request">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-group">
             <label class="form-label" for="name">Full Name *</label>
-            <input type="text" id="name" class="form-input" aria-describedby="nameError" placeholder="Enter your full name" required>
+            <input type="text" id="name" name="name" class="form-input" aria-describedby="nameError" placeholder="Enter your full name" required>
             <div class="error-message" id="nameError">Please enter your name</div>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="email">Email Address *</label>
-            <input type="email" id="email" class="form-input" aria-describedby="emailError" placeholder="Enter your email address" required>
+            <input type="email" id="email" name="email" class="form-input" aria-describedby="emailError" placeholder="Enter your email address" required>
             <div class="error-message" id="emailError">Please enter a valid email address</div>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="subject">Subject *</label>
-            <select id="subject" class="form-input form-select" aria-describedby="subjectError" required>
+            <select id="subject" name="subject" class="form-input form-select" aria-describedby="subjectError" required>
               <option value="">Select a subject</option>
-              <option value="course-inquiry">Course Inquiry</option>
-              <option value="robotics-kits">Robotics Kits</option>
-              <option value="mentorship">Mentorship</option>
-              <option value="collaboration">Collaboration</option>
-              <option value="technical-support">Technical Support</option>
-              <option value="other">Other</option>
+              <option value="Course Inquiry">Course Inquiry</option>
+              <option value="Robotics Kits">Robotics Kits</option>
+              <option value="Mentorship">Mentorship</option>
+              <option value="Collaboration">Collaboration</option>
+              <option value="Technical Support">Technical Support</option>
+              <option value="Other">Other</option>
             </select>
             <div class="error-message" id="subjectError">Please select a subject</div>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="message">Your Message *</label>
-            <textarea id="message" class="form-textarea" aria-describedby="messageError" placeholder="Tell me about your project, questions, or how I can help you..." required></textarea>
+            <textarea id="message" name="message" class="form-textarea" aria-describedby="messageError" placeholder="Tell me about your project, questions, or how I can help you..." required></textarea>
             <div class="error-message" id="messageError">Please enter your message</div>
           </div>
 

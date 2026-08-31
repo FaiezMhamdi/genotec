@@ -1,16 +1,13 @@
 // contact.js - Contact form functionality
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
-    const successMessage = document.getElementById('successMessage');
     const faqItems = document.querySelectorAll('.faq-item');
 
-    // Form validation and submission
+    // Form validation — let browser submit to FormSubmit on success
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (validateForm()) {
-                submitForm();
+            if (!validateForm()) {
+                e.preventDefault();
             }
         });
 
@@ -130,45 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (errorElement) {
             errorElement.classList.remove('show');
         }
-    }
-
-    function submitForm() {
-        const submitBtn = contactForm.querySelector('.submit-btn');
-        if (!submitBtn) {
-            console.error('submitForm: .submit-btn not found inside contactForm');
-            return;
-        }
-
-        const originalText = submitBtn.innerHTML;
-        
-        // Show loading state
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-
-        // Simulate form submission
-        setTimeout(() => {
-            // Show success message
-            if (successMessage) {
-                successMessage.classList.add('show');
-            }
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Reset button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-            
-            // Scroll to success message
-            if (successMessage) {
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    successMessage.classList.remove('show');
-                }, 5000);
-            }
-        }, 2000);
     }
 
     // Smooth scrolling for anchor links
