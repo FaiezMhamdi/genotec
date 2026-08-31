@@ -263,17 +263,22 @@
   transition: left 0.5s ease;
 }
 
-.submit-btn:hover::before {
+.submit-btn:hover:not(:disabled)::before {
   left: 100%;
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 203, 190, 0.4);
 }
 
-.submit-btn:active {
+.submit-btn:active:not(:disabled) {
   transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 /* Form Validation */
@@ -298,12 +303,10 @@
 .success-message {
   background: rgba(0, 255, 136, 0.1);
   border: 1px solid rgba(0, 255, 136, 0.3);
-  color: #00ff88;
-  padding: 20px;
   border-radius: var(--radius);
-  text-align: center;
-  margin-bottom: 25px;
+  padding: 0;
   display: none;
+  overflow: hidden;
 }
 
 .success-message.show {
@@ -320,6 +323,78 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.success-content {
+  padding: 40px;
+  text-align: center;
+}
+
+.success-content i {
+  font-size: 4rem;
+  color: #00ff88;
+  margin-bottom: 15px;
+  display: block;
+  animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.success-content h3 {
+  color: #00ff88;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.success-content p {
+  color: var(--muted);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.submission-details {
+  text-align: left;
+  background: rgba(0, 203, 190, 0.05);
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.detail-item {
+  color: var(--text);
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 203, 190, 0.2);
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.detail-item strong {
+  color: var(--accent1);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.message-preview {
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.reset-form-btn {
+  display: inline-block;
+  margin-top: 20px;
 }
 
 /* FAQ Section */
@@ -430,6 +505,18 @@
   .contact-cta h2 {
     font-size: 2rem;
   }
+  
+  .success-content {
+    padding: 30px;
+  }
+  
+  .success-content i {
+    font-size: 3rem;
+  }
+  
+  .success-content h3 {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -466,5 +553,18 @@
   .user-type-label {
     padding: 12px 15px;
     font-size: 0.9rem;
+  }
+  
+  .success-content {
+    padding: 20px;
+  }
+  
+  .submission-details {
+    padding: 15px;
+  }
+  
+  .detail-item {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
   }
 }
