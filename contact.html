@@ -181,11 +181,17 @@
       <div class="contact-form-container" id="contact-form">
         <h2>Send Me a Message</h2>
 
-        <form id="contactForm" action="https://formsubmit.co/faiezmhamdi5@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New Mectrion Contact Request">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+          <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>Thank you! Message Received 🎉</h3>
+            <p>Your message has been sent successfully. I'll review your inquiry and get back to you as soon as possible.</p>
+            <div class="submission-details" id="submissionDetails"></div>
+          </div>
+        </div>
+
+        <form id="contactForm">
           <div class="form-group">
             <label class="form-label">I am a... *</label>
             <div class="user-type-selector">
