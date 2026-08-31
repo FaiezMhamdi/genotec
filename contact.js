@@ -1,6 +1,7 @@
 // contact.js - Contact form functionality
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
     const faqItems = document.querySelectorAll('.faq-item');
     const userTypeRadios = document.querySelectorAll('input[name="userType"]');
     const erasmusGroup = document.getElementById('erasmusGroup');
@@ -31,11 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Form validation — let browser submit to FormSubmit on success
+    // Form validation and submission
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            if (!validateForm()) {
-                e.preventDefault();
+            e.preventDefault();
+            
+            if (validateForm()) {
+                submitFormWithFeedback();
             }
         });
 
@@ -172,6 +175,116 @@ document.addEventListener('DOMContentLoaded', function() {
         if (errorElement) {
             errorElement.classList.remove('show');
         }
+    }
+
+    function submitFormWithFeedback() {
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const userType = document.querySelector('input[name="userType"]:checked').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+        // Prepare FormSubmit data
+        const formData = new FormData();
+        formData.append('userType', userType);
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('subject', subject);
+        formData.append('message', message);
+        formData.append('_subject', `New Mectrion Contact Request - ${userType}`);
+        formData.append('_template', 'table');
+        formData.append('_captcha', 'false');
+
+        // Send to FormSubmit
+        fetch('https://formsubmit.co/faiezmhamdi5@gmail.com', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                // Show success message with details
+                showSuccessMessage(name, email, userType, subject, message);
+                // Reset form
+                contactForm.reset();
+                resetFormState();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error sending your message. Please try again.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        });
+    }
+
+    function showSuccessMessage(name, email, userType, subject, message) {
+        // Hide form
+        contactForm.style.display = 'none';
+        
+        // Show success message
+        successMessage.classList.add('show');
+
+        // Display submission details
+        const submissionDetails = document.getElementById('submissionDetails');
+        submissionDetails.innerHTML = `
+            <div class="detail-item">
+                <strong>Name:</strong> ${escapeHtml(name)}
+            </div>
+            <div class="detail-item">
+                <strong>Email:</strong> ${escapeHtml(email)}
+            </div>
+            <div class="detail-item">
+                <strong>Type:</strong> ${escapeHtml(userType)}
+            </div>
+            <div class="detail-item">
+                <strong>Subject:</strong> ${escapeHtml(subject)}
+            </div>
+            <div class="detail-item">
+                <strong>Message Preview:</strong> 
+                <p class="message-preview">${escapeHtml(message.substring(0, 150))}${message.length > 150 ? '...' : ''}</p>
+            </div>
+            <button type="button" class="btn btn-primary reset-form-btn" onclick="location.reload();">
+                <i class="fas fa-redo"></i> Send Another Message
+            </button>
+        `;
+
+        // Scroll to success message
+        setTimeout(() => {
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+    }
+
+    function resetFormState() {
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        
+        // Reset user type selection
+        document.querySelectorAll('input[name="userType"]').forEach(radio => {
+            radio.checked = false;
+        });
+        
+        // Reset subject dropdown to show general options
+        erasmusGroup.style.display = 'none';
+        generalGroup.style.display = 'block';
+    }
+
+    function escapeHtml(text) {
+        const map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        };
+        return text.replace(/[&<>"']/g, m => map[m]);
     }
 
     // Smooth scrolling for anchor links
