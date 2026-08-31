@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://via.placeholder.com data:; media-src 'self'; script-src 'self'; connect-src 'self' https://formsubmit.co; frame-ancestors 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.googleapis.com; script-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Contact — Mectrion | Robotics & AI Education</title>
@@ -185,6 +185,25 @@
           <input type="hidden" name="_subject" value="New Mectrion Contact Request">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
+          
+          <div class="form-group">
+            <label class="form-label">I am a... *</label>
+            <div class="user-type-selector">
+              <input type="radio" id="userTypeErasmus" name="userType" value="Erasmus Student" class="user-type-radio">
+              <label for="userTypeErasmus" class="user-type-label">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Erasmus Student</span>
+              </label>
+              
+              <input type="radio" id="userTypeParticular" name="userType" value="Particular" class="user-type-radio">
+              <label for="userTypeParticular" class="user-type-label">
+                <i class="fas fa-user"></i>
+                <span>Particular</span>
+              </label>
+            </div>
+            <div class="error-message" id="userTypeError">Please select your type</div>
+          </div>
+
           <div class="form-group">
             <label class="form-label" for="name">Full Name *</label>
             <input type="text" id="name" name="name" class="form-input" aria-describedby="nameError" placeholder="Enter your full name" required>
@@ -201,12 +220,21 @@
             <label class="form-label" for="subject">Subject *</label>
             <select id="subject" name="subject" class="form-input form-select" aria-describedby="subjectError" required>
               <option value="">Select a subject</option>
-              <option value="Course Inquiry">Course Inquiry</option>
-              <option value="Robotics Kits">Robotics Kits</option>
-              <option value="Mentorship">Mentorship</option>
-              <option value="Collaboration">Collaboration</option>
-              <option value="Technical Support">Technical Support</option>
-              <option value="Other">Other</option>
+              <optgroup label="Erasmus Students" id="erasmusGroup" style="display: none;">
+                <option value="Erasmus Course Inquiry">Erasmus Course Inquiry</option>
+                <option value="Erasmus Training Program">Erasmus Training Program</option>
+                <option value="Erasmus Certification">Erasmus Certification</option>
+                <option value="Erasmus Duration & Schedule">Erasmus Duration & Schedule</option>
+                <option value="Erasmus Accommodation">Erasmus Accommodation</option>
+              </optgroup>
+              <optgroup label="General Inquiries" id="generalGroup">
+                <option value="Course Inquiry">Course Inquiry</option>
+                <option value="Robotics Kits">Robotics Kits</option>
+                <option value="Mentorship">Mentorship</option>
+                <option value="Collaboration">Collaboration</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Other">Other</option>
+              </optgroup>
             </select>
             <div class="error-message" id="subjectError">Please select a subject</div>
           </div>
@@ -240,7 +268,7 @@
           <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
         </div>
         <div class="faq-answer">
-          <p>My courses are designed for students aged 10 and above. Python programming starts at age 10+, robotics kits at 12+, and AI projects at 14+. Each course is tailored to the appropriate age group's learning capabilities.</p>
+          <p>My courses are designed for students aged 10 and above. Python programming starts at age 10+, robotics kits at 12+, and AI projects at 14+. Each course is tailored to the appropriate level.</p>
         </div>
       </div>
 
@@ -303,6 +331,3 @@
   <script src="contact.js"></script>
 </body>
 </html>
-
-
-
