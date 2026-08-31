@@ -40,8 +40,6 @@ class ShoppingCart {
 
     setupEventListeners() {
         // Cart toggle
-        document.getElementById('viewCartBtn')?.addEventListener('click', () => this.toggleCart());
-        document.getElementById('mobileViewCart')?.addEventListener('click', () => this.toggleCart());
         document.getElementById('ctaViewCart')?.addEventListener('click', () => this.toggleCart());
         document.querySelector('.close-cart')?.addEventListener('click', () => this.closeCart());
         document.querySelector('.overlay')?.addEventListener('click', () => this.closeCart());
@@ -117,20 +115,11 @@ class ShoppingCart {
     }
 
     updateCartCount() {
+        // Header cart badges were removed; keep for any count element that may still exist
         const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
-        
-        // Update all cart count elements
         document.querySelectorAll('#cartCount, .cart-badge').forEach(element => {
             element.textContent = totalItems;
         });
-
-        // Add/remove cart pulse animation
-        const cartBadges = document.querySelectorAll('.cart-badge');
-        if (totalItems > 0) {
-            cartBadges.forEach(badge => badge.classList.add('has-items'));
-        } else {
-            cartBadges.forEach(badge => badge.classList.remove('has-items'));
-        }
     }
 
     updateCartDisplay() {
@@ -302,6 +291,23 @@ class ShoppingCart {
 // formatPrice, debounce) are now in shared.js.
 document.addEventListener('DOMContentLoaded', () => {
     const cart = new ShoppingCart();
+
+    // Expandable "Details" panels on course cards
+    document.querySelectorAll('.btn-details').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const card = btn.closest('.product-card');
+            const details = card ? card.querySelector('.course-quick-details') : null;
+            if (!details) return;
+
+            const isOpen = details.classList.toggle('open');
+            btn.setAttribute('aria-expanded', String(isOpen));
+            const icon = btn.querySelector('.fa-chevron-down, .fa-chevron-up');
+            if (icon) {
+                icon.classList.toggle('fa-chevron-down', !isOpen);
+                icon.classList.toggle('fa-chevron-up', isOpen);
+            }
+        });
+    });
 
     // Escape key to close cart
     document.addEventListener('keydown', (e) => {

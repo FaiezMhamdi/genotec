@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mectrion · Mectrion Training Services</title>
+  <meta name="description" content="Mectrion training services — robotics, CNC, 3D printing, coding, IoT and drones. Hands-on industry-grade programs for Erasmus students and institutions." />
+  <link rel="icon" href="mectronicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="enhancements.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #05070c;
+      color: #dbe8e5;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      padding-top: 72px; /* space for fixed shared header */
+    }
+    /* blueprint grid overlay */
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,201,167,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,201,167,0.06) 1px, transparent 1px);
+      background-size: 44px 44px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* ambient cyan glow */
+    body::after {
+      content: "";
+      position: fixed; inset: 0;
+      background: radial-gradient(60% 45% at 50% -5%, rgba(0,201,167,0.16), transparent 70%),
+                  radial-gradient(50% 40% at 90% 100%, rgba(0,232,240,0.10), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative; z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 2rem;
+    }
+
+    /* ── corner frame ── */
+    .frame { position: absolute; inset: 0; pointer-events: none; }
+    .frame i {
+      position: absolute; width: 26px; height: 26px;
+      border: 2px solid rgba(34,230,255,0.55);
+      opacity: .8; filter: drop-shadow(0 0 6px rgba(34,230,255,0.6));
+    }
+    .frame i:nth-child(1){ top:12px; left:12px; border-right:0; border-bottom:0; }
+    .frame i:nth-child(2){ top:12px; right:12px; border-left:0; border-bottom:0; }
+    .frame i:nth-child(3){ bottom:12px; left:12px; border-right:0; border-top:0; }
+    .frame i:nth-child(4){ bottom:12px; right:12px; border-left:0; border-top:0; }
+    .shell {
+      position: relative;
+      max-width: 1200px; margin: 0 auto;
+      background: rgba(8,15,18,0.65);
+      border: 1px solid rgba(34,230,255,0.22);
+      border-radius: 24px;
+      backdrop-filter: blur(6px);
+      padding: 2.5rem 2rem;
+      box-shadow: 0 0 0 1px rgba(34,230,255,0.06), 0 30px 80px rgba(0,0,0,0.6);
+    }
+
+    /* ── header ── */
+    .header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.2rem; margin-bottom: 2.5rem; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand .logo {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(0,201,167,0.15), rgba(0,232,240,0.15));
+      border: 1px solid rgba(34,230,255,0.4);
+      box-shadow: 0 0 24px rgba(0,201,167,0.35), inset 0 0 18px rgba(0,201,167,0.15);
+      font-size: 1.3rem; color: #3fe6ff;
+    }
+    .brand h1 { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: .04em; color: #fff; }
+    .brand h1 i { color: #35e8ff; margin-right: .35rem; }
+    .brand .tagline { color: #9fc6bd; font-weight: 500; font-size: .85rem; letter-spacing: .03em; margin-top: .1rem; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: #34f0c8; background: rgba(0,201,167,0.1);
+      border: 1px solid rgba(34,230,255,0.35);
+      padding: .5rem 1.1rem; border-radius: 50px;
+      font-weight: 600; font-size: .82rem; letter-spacing: .06em; text-transform: uppercase;
+      box-shadow: 0 0 18px rgba(0,201,167,0.2);
+    }
+    .badge i { color: #48f0ff; }
+
+    /* ── section intro ── */
+    .mctr-header { text-align: center; margin-bottom: 2.8rem; }
+    .mctr-emblem {
+      position: relative; width: 130px; height: 130px; margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mctr-emblem img { width: 220px; height: 220px; object-fit: contain; z-index: 1; filter: drop-shadow(0 0 18px rgba(34,230,255,0.7)); animation: float 5s ease-in-out infinite; }
+    .mctr-emblem::before {
+      content: ""; position: absolute; inset: 2px; border-radius: 50%;
+      border: 1.5px dashed rgba(34,230,255,0.55); animation: spin 16s linear infinite;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: #3fe6ff; background: rgba(34,230,255,0.08);
+      border: 1px solid rgba(34,230,255,0.35);
+      padding: .35rem 1.1rem; border-radius: 50px;
+      font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: .9rem;
+    }
+    .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: #48f0ff; box-shadow: 0 0 8px #48f0ff; animation: blink 1.6s ease infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+    .section-title {
+      font-family: 'Orbitron', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: .01em; color: #fff;
+    }
+    .section-title .grad { background: linear-gradient(90deg, #35e8ff 0%, #00c9a7 55%, #45f0c0 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+    .section-sub { color: #9fc8bd; max-width: 620px; margin: .6rem auto 0; font-size: 1.02rem; }
+
+    /* ── services grid ── */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; margin: 2rem 0 3rem; }
+
+    .service-card {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(120% 90% at 15% -5%, rgba(34,230,255,0.10) 0%, transparent 55%),
+        linear-gradient(160deg, rgba(12,22,26,0.9), rgba(7,13,16,0.95));
+      border: 1px solid rgba(34,230,255,0.18);
+      border-radius: 18px;
+      padding: 1.7rem 1.5rem;
+      display: flex; flex-direction: column;
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .service-card::before {  /* scanline sweep */
+      content: ""; position: absolute; top:0; left:-120%; height:100%; width:60%;
+      background: linear-gradient(115deg, transparent, rgba(72,240,255,0.08), transparent);
+      transform: skewX(-18deg); transition: left .8s ease;
+    }
+    .service-card:hover::before { left: 130%; }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(34,230,255,0.5);
+      box-shadow: 0 20px 50px rgba(0,201,167,0.18), 0 0 40px -14px rgba(34,230,255,0.5);
+    }
+
+    /* corner brackets */
+    .c-bt { position:absolute; width:20px; height:20px; border:1.5px solid rgba(34,230,255,0.6); opacity:.8; }
+    .bt1{ top:10px; left:10px; border-right:0; border-bottom:0; }
+    .bt2{ top:10px; right:10px; border-left:0; border-bottom:0; }
+    .bt3{ bottom:10px; left:10px; border-right:0; border-top:0; }
+    .bt4{ bottom:10px; right:10px; border-left:0; border-top:0; }
+
+    /* HUD status bar */
+    .hud {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: #7fd8cd;
+      margin-bottom: .9rem;
+    }
+    .hud .led { width: 8px; height: 8px; border-radius: 50%; background: #34e8c8; box-shadow: 0 0 8px #34e8c8; animation: blink 1.6s ease infinite; }
+    .hud .tag { color: #34e8c8; font-weight: 700; }
+    .hud .id { margin-left: auto; color: rgba(53,232,255,0.6); font-family: 'Orbitron', sans-serif; }
+
+    .card-head { display: flex; align-items: center; gap: .8rem; margin-bottom: .6rem; }
+    .icon-ring {
+      width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(0,201,167,0.2), rgba(53,232,255,0.1));
+      border: 1px solid rgba(34,230,255,0.45);
+      box-shadow: 0 0 16px rgba(0,201,167,0.25);
+      color: #48f0ff; font-size: 1.2rem;
+    }
+    .service-card h3 { font-size: 1.22rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: .6rem; }
+    .popular-tag {
+      background: linear-gradient(90deg, #00c9a7, #35e8ff); color: #03201b;
+      font-size: .6rem; font-weight: 800; padding: .2rem .6rem; border-radius: 40px;
+      text-transform: uppercase; letter-spacing: .4px; margin-left: .2rem;
+    }
+    .service-card p { color: #9fc2ba; font-size: .92rem; margin-bottom: 1rem; flex: 1; }
+
+    .chip-group { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .chip {
+      background: rgba(34,230,255,0.08); color: #bfe8e0;
+      border: 1px solid rgba(34,230,255,0.22);
+      padding: .28rem .72rem; border-radius: 30px;
+      font-size: .72rem; font-weight: 500; letter-spacing: .02em;
+    }
+    .chip i { margin-right: .25rem; color: #48f0ff; font-size: .65rem; }
+
+    .card-foot { margin-top: 1.1rem; padding-top: .9rem; border-top: 1px dashed rgba(34,230,255,0.18); display: flex; align-items: center; justify-content: space-between; }
+    .card-foot .mctr-io { font-family: 'Orbitron', sans-serif; font-size: .64rem; letter-spacing: .2em; color: rgba(53,232,255,0.5); }
+    .card-foot .go {
+      display: inline-flex; align-items: center; gap: .4rem;
+      color: #aef6e6; font-size: .78rem; font-weight: 600; letter-spacing: .04em;
+    }
+    .card-foot .go i { color: #48f0ff; }
+
+    /* ── why ── */
+    .why-section {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1.2rem;
+      margin: 2.5rem 0; position: relative;
+    }
+    .why-item {
+      text-align: center; padding: 1.5rem 1rem;
+      background: rgba(12,22,26,0.6); border: 1px solid rgba(34,230,255,0.16); border-radius: 16px;
+      transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+    }
+    .why-item:hover { border-color: rgba(34,230,255,0.5); transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,201,167,0.15); }
+    .why-item i { font-size: 1.7rem; color: #35e8ff; margin-bottom: .5rem; display: block; filter: drop-shadow(0 0 8px rgba(53,232,255,0.5)); }
+    .why-item h4 { font-weight: 700; font-size: .95rem; color: #fff; margin-bottom: .2rem; }
+    .why-item p { font-size: .78rem; color: #8fb9b0; }
+
+    /* ── about + stats ── */
+    .about-mini {
+      display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;
+      background: rgba(12,22,26,0.6); border: 1px solid rgba(34,230,255,0.18); border-radius: 20px;
+      padding: 2rem; margin: 2rem 0 1.5rem;
+    }
+    .about-text { flex: 2; min-width: 260px; }
+    .about-text h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: .5rem; }
+    .about-text h2 i { color: #35e8ff; margin-right: .3rem; }
+    .about-text p { color: #9fc2ba; max-width: 600px; font-size: .95rem; }
+    .stats { display: flex; flex: 1; gap: 2rem; justify-content: flex-end; flex-wrap: wrap; }
+    .stat-item { text-align: center; }
+    .stat-item .num { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 800; color: #48f0ff; text-shadow: 0 0 14px rgba(53,232,255,0.5); }
+    .stat-item .label { font-size: .74rem; color: #8fb9b0; font-weight: 500; letter-spacing: .03em; text-transform: uppercase; }
+
+    /* ── programs ── */
+    .sub-title-row { display: flex; align-items: center; gap: .8rem; margin: 2.5rem 0 1.2rem; }
+    .sub-title-row .bar { width: 6px; height: 26px; background: linear-gradient(180deg,#35e8ff,#00c9a7); border-radius: 4px; box-shadow: 0 0 12px rgba(53,232,255,0.6); }
+    .sub-title-row h2 { font-family: 'Orbitron', sans-serif; font-size: 1.35rem; font-weight: 800; color: #fff; letter-spacing: .02em; }
+    .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 1.4rem; }
+
+    .program-card {
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, rgba(12,22,26,0.9), rgba(7,13,16,0.95));
+      border: 1px solid rgba(34,230,255,0.18); border-radius: 16px;
+      padding: 1.4rem 1.3rem;
+    }
+    .program-card:hover { border-color: rgba(34,230,255,0.5); box-shadow: 0 14px 40px rgba(0,201,167,0.15); }
+    .program-card h3 { display: flex; align-items: center; gap: .6rem; font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: .55rem; }
+    .program-card h3 i { color: #35e8ff; }
+    .program-card p { color: #9fc2ba; font-size: .86rem; margin-bottom: .9rem; }
+    .program-card .chip-group .chip { background: rgba(34,230,255,0.06); }
+
+    /* ── partners ── */
+    .partners {
+      margin: 2rem 0; display: flex; flex-wrap: wrap; gap: .8rem; align-items: center;
+      border-top: 1px solid rgba(34,230,255,0.18); padding-top: 1.6rem;
+    }
+    .partners .plabel { display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; color: #fff; margin-right: .4rem; }
+    .partners .plabel i { color: #35e8ff; }
+    .pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: rgba(0,201,167,0.1); color: #bfeee3;
+      border: 1px solid rgba(34,230,255,0.22); padding: .3rem .95rem; border-radius: 50px;
+      font-size: .76rem; font-weight: 600;
+    }
+    .pill i { color: #48f0ff; }
+
+    /* ── CTA ── */
+    .cta-section {
+      position: relative; overflow: hidden;
+      margin-top: 2.6rem; padding: 2.2rem 2rem;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.2rem;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(0,201,167,0.18), rgba(53,232,255,0.08)), rgba(8,15,18,0.8);
+      border: 1px solid rgba(34,230,255,0.35);
+      box-shadow: 0 0 40px -10px rgba(0,201,167,0.4), inset 0 0 60px rgba(0,201,167,0.06);
+    }
+    .cta-text h3 { font-family: 'Orbitron', sans-serif; font-size: 1.35rem; font-weight: 800; color: #fff; margin-bottom: .2rem; }
+    .cta-text p { color: #b3d9d0; }
+    .cta-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: linear-gradient(135deg, #00c9a7, #35e8ff); color: #03211c;
+      border: none; padding: .72rem 1.5rem; border-radius: 60px;
+      font-weight: 700; font-size: .88rem; cursor: default;
+      box-shadow: 0 8px 26px rgba(0,201,167,0.4);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,232,240,0.5); }
+    .btn-outline { background: transparent; border: 1.5px solid rgba(34,230,255,0.4); color: #bfeee3; box-shadow: none; }
+    .btn-outline:hover { background: rgba(34,230,255,0.08); box-shadow: 0 0 0 1px rgba(34,230,255,0.4); }
+
+    .footer-meta {
+      margin-top: 2rem; font-size: .76rem; color: #6f9a90;
+      border-top: 1px solid rgba(34,230,255,0.14); padding-top: 1.3rem;
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem;
+      letter-spacing: .02em;
+    }
+    .footer-meta i { color: #35e8ff; margin-right: .25rem; }
+
+    @media (max-width: 700px) {
+      .frame { display: none; }
+      .container { padding: 1.2rem .9rem; }
+      .header { flex-direction: column; align-items: flex-start; }
+      .stats { justify-content: flex-start; }
+      .cta-section { flex-direction: column; align-items: flex-start; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div id="site-header" data-active="Services"></div>
+<script src="components.js"></script>
+
+<main id="main-content">
+<div class="container">
+  <div class="frame"><i></i><i></i><i></i><i></i></div>
+
+  <div class="shell" style="position:relative;max-width:1200px;margin:0 auto;background:rgba(8,15,18,0.65);border:1px solid rgba(34,230,255,0.22);border-radius:24px;padding:2.5rem 2rem;box-shadow:0 0 0 1px rgba(34,230,255,0.06),0 30px 80px rgba(0,0,0,0.6);">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">
+      <div class="logo"><i class="fas fa-microchip"></i></div>
+      <div>
+        <h1><i class="fas fa-shield-halved"></i>Mectrion<span style="color:#00c9a7">.</span></h1>
+        <div class="tagline">Mectrion · Generation of Technology — hands-on training</div>
+      </div>
+    </div>
+    <div class="badge"><i class="fas fa-graduation-cap"></i> Erasmus+ recognised</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="mctr-head">
+    <div class="mctr-emblem"><img src="mectronicon.png" /></div>
+    <div class="eyebrow"><span class="dot"></span> Mectrion Training Matrix</div>
+    <h2 class="section-title">Our <span class="grad">Training</span> Services</h2>
+    <p class="section-sub">Industry-grade programs for students &amp; institutions</p>
+  </div>
+
+  <!-- SERVICES GRID -->
+  <div class="services-grid">
+    <!-- 1. Robotics -->
+    <div class="service-card">
+      <span class="c-bt bt1"></span><span class="c-bt bt2"></span><span class="c-bt bt3"></span><span class="c-bt bt4"></span>
+      <div class="hud"><span class="led"></span><span class="tag">UNIT 01</span><span class="id">ROB-01</span></div>
+      <div class="card-head">
+        <div class="icon-ring"><i class="fas fa-robot"></i></div>
+        <h3>Robotics Workshops <span class="popular-tag">most popular</span></h3>
+      </div>
+      <p>Hands-on training in robot design, programming, and control — from basic bots to autonomous systems.</p>
+      <div class="chip-group">
+        <span class="chip"><i class="fas fa-code"></i> Mobile Robotics</span>
+        <span class="chip"><i class="fas fa-microchip"></i> Sensor Integration</span>
+        <span class="chip"><i class="fas fa-cogs"></i> Autonomous Systems</span>
+      </div>
+      <div class="card-foot"><span class="mctr-io">MCTR.IO-01</span></div>
+    </div>
+
+    <!-- 2. CNC -->
+    <div class="service-card">
+      <span class="c-bt bt1"></span><span class="c-bt bt2"></span><span class="c-bt bt3"></span><span class="c-bt bt4"></span>
+      <div class="hud"><span class="led"></span><span class="tag">UNIT 02</span><span class="id">CNC-02</span></div>
+      <div class="card-head">
+        <div class="icon-ring"><i class="fas fa-cog"></i></div>
+        <h3>CNC Machining</h3>
+      </div>
+      <p>Professional CNC training — program, operate, and design precision parts with industrial equipment.</p>
+      <div class="chip-group">
+        <span class="chip"><i class="fas fa-pen-fancy"></i> CNC Programming</span>
+        <span class="chip"><i class="fas fa-ruler-combined"></i> Precision Machining</span>
+        <span class="chip"><i class="fas fa-cube"></i> Design for Mfg.</span>
+      </div>
+      <div class="card-foot"><span class="mctr-io">MCTR.IO-02</span></div>
+    </div>
+
+    <!-- 3. 3D Printing -->
+    <div class="service-card">
+      <span class="c-bt bt1"></span><span class="c-bt bt2"></span><span class="c-bt bt3"></span><span class="c-bt bt4"></span>
+      <div class="hud"><span class="led"></span><span class="tag">UNIT 03</span><span class="id">CAD-03</span></div>
+      <div class="card-head">
+        <div class="icon-ring"><i class="fas fa-cube"></i></div>
+        <h3>3D Printing &amp; Design</h3>
+      </div>
+      <p>From CAD concept to production-ready prototype — master the full 3D workflow.</p>
+      <div class="chip-group">
+        <span class="chip"><i class="fas fa-drafting-compass"></i> 3D CAD Design</span>
+        <span class="chip"><i class="fas fa-print"></i> FDM / Resin</span>
+        <span class="chip"><i class="fas fa-bolt"></i> Rapid Prototyping</span>
+      </div>
+      <div class="card-foot"><span class="mctr-io">MCTR.IO-03</span></div>
+    </div>
+
+    <!-- 4. Coding -->
+    <div class="service-card">
+      <span class="c-bt bt1"></span><span class="c-bt bt2"></span><span class="c-bt bt3"></span><span class="c-bt bt4"></span>
+      <div class="hud"><span class="led"></span><span class="tag">UNIT 04</span><span class="id">COD-04</span></div>
+      <div class="card-head">
+        <div class="icon-ring"><i class="fas fa-terminal"></i></div>
+        <h3>Coding &amp; Programming</h3>
+      </div>
+      <p>From Python fundamentals to embedded C/C++ — build skills for robotics and IoT.</p>
+      <div class="chip-group">
+        <span class="chip"><i class="fab fa-python"></i> Python</span>
+        <span class="chip"><i class="fas fa-microchip"></i> C / C++</span>
+        <span class="chip"><i class="fas fa-project-diagram"></i> Algorithm Design</span>
+      </div>
+      <div class="card-foot"><span class="mctr-io">MCTR.IO-04</span></div>
+    </div>
+
+    <!-- 5. Embedded & IoT -->
+    <div class="service-card">
+      <span class="c-bt bt1"></span><span class="c-bt bt2"></span><span class="c-bt bt3"></span><span class="c-bt bt4"></span>
+      <div class="hud"><span class="led"></span><span class="tag">UNIT 05</span><span class="id">IOT-05</span></div>
+      <div class="card-head">
+        <div class="icon-ring"><i class="fas fa-wifi"></i></div>
+        <h3>Embedded &amp; IoT</h3>
+      </div>
+      <p>Build smart connected devices — microcontrollers, sensor networks, and cloud integration.</p>
+      <div class="chip-group">
+        <span class="chip"><i class="fab fa-raspberry-pi"></i> Arduino / Pi</span>
+        <span class="chip"><i class="fas fa-cloud"></i> IoT Protocols</span>
+        <span class="chip"><i class="fas fa-network-wired"></i> Sensor Networks</span>
+      </div>
+      <div class="card-foot"><span class="mctr-io">MCTR.IO-05</span></div>
+    </div>
+
+    <!-- 6. Drones -->
+    <div class="service-card">
+      <span class="c-bt bt1"></span><span class="c-bt bt2"></span><span class="c-bt bt3"></span><span class="c-bt bt4"></span>
+      <div class="hud"><span class="led"></span><span class="tag">UNIT 06</span><span class="id">UAV-06</span></div>
+      <div class="card-head">
+        <div class="icon-ring"><i class="fas fa-helicopter"></i></div>
+        <h3>Drones &amp; UAV</h3>
+      </div>
+      <p>Assemble, program, and fly autonomous drones — from hardware to mission planning.</p>
+      <div class="chip-group">
+        <span class="chip"><i class="fas fa-tools"></i> Drone Assembly</span>
+        <span class="chip"><i class="fas fa-code"></i> Flight Programming</span>
+        <span class="chip"><i class="fas fa-map-marked-alt"></i> Autonomous Missions</span>
+      </div>
+      <div class="card-foot"><span class="mctr-io">MCTR.IO-06</span></div>
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <div class="why-section">
+    <div class="why-item"><i class="fas fa-certificate"></i><h4>Certificate Included</h4><p>Recognised upon completion</p></div>
+    <div class="why-item"><i class="fas fa-globe-europe"></i><h4>Erasmus Focused</h4><p>Designed for mobility</p></div>
+    <div class="why-item"><i class="fas fa-chalkboard-teacher"></i><h4>Expert Mentors</h4><p>Industry professionals</p></div>
+    <div class="why-item"><i class="fas fa-microchip"></i><h4>Real Equipment</h4><p>CNC, robots, 3D printers</p></div>
+  </div>
+
+  <!-- ABOUT + STATS -->
+  <div class="about-mini">
+    <div class="about-text">
+      <h2><i class="fas fa-atom"></i> Generation of Technology</h2>
+      <p>We bridge the gap between theory and industrial practice. Specialised in robotics, advanced manufacturing, and embedded systems for Erasmus students and educational institutions.</p>
+    </div>
+    <div class="stats">
+      <div class="stat-item"><span class="num">95%</span><div class="label">Robotics &amp; Automation</div></div>
+      <div class="stat-item"><span class="num">93%</span><div class="label">CNC &amp; 3D Tech</div></div>
+      <div class="stat-item"><span class="num">90%</span><div class="label">Embedded Systems</div></div>
+    </div>
+  </div>
+
+  <!-- TRAINING PROGRAMS -->
+  <div class="sub-title-row"><span class="bar"></span><h2>Training Programs</h2></div>
+  <div class="programs-grid">
+    <div class="program-card">
+      <h3><i class="fas fa-bolt"></i> Intensive Workshops</h3>
+      <p>1-4 weeks · hands-on, focused · robotics, CNC, 3D printing or coding.</p>
+      <div class="chip-group"><span class="chip">Certificate</span><span class="chip">Short-term</span></div>
+    </div>
+    <div class="program-card">
+      <h3><i class="fas fa-calendar-alt"></i> Full Training</h3>
+      <p>8-12 weeks · multi-tech · robotics, IoT, embedded systems &amp; career prep.</p>
+      <div class="chip-group"><span class="chip">Internship path</span><span class="chip">Extended</span></div>
+    </div>
+    <div class="program-card">
+      <h3><i class="fas fa-school"></i> Educational Robots</h3>
+      <p>K-12 kits, open days, teacher training · supply and support for schools.</p>
+      <div class="chip-group"><span class="chip">Open Days</span><span class="chip">Support</span></div>
+    </div>
+  </div>
+
+  <!-- PARTNERS / TECH -->
+  <div class="partners">
+    <span class="plabel"><i class="fas fa-handshake"></i> Partners &amp; Technologies</span>
+    <span class="pill"><i class="fas fa-check-circle"></i> Universal Mobility</span>
+    <span class="pill"><i class="fas fa-check-circle"></i> Erasmus+</span>
+    <span class="pill"><i class="fab fa-python"></i> Python</span>
+    <span class="pill"><i class="fas fa-microchip"></i> Arduino</span>
+    <span class="pill"><i class="fab fa-raspberry-pi"></i> Raspberry Pi</span>
+    <span class="pill"><i class="fas fa-cube"></i> SolidWorks</span>
+  </div>
+
+  <!-- CTA / FOOTER -->
+  <div class="cta-section">
+    <div class="cta-text">
+      <h3>Ready to transform your career?</h3>
+      <p>Join hundreds of students learning cutting-edge technology.</p>
+    </div>
+    <div class="cta-actions">
+      <span class="btn"><i class="fas fa-envelope"></i> Contact us</span>
+      <span class="btn btn-outline"><i class="fas fa-info-circle"></i> Programs</span>
+    </div>
+  </div>
+
+  <div class="footer-meta">
+    <span><i class="fas fa-copyright"></i> Mectrion Group · Mectrion Training</span>
+    <span id="date-display"></span>
+  </div>
+
+  </div><!-- /shell -->
+</div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var d = document.getElementById('date-display');
+    if (d) d.textContent = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  });
+</script>
+</body>
+</html>

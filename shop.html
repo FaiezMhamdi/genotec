@@ -6,25 +6,25 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://via.placeholder.com data:; media-src 'self'; script-src 'self'; frame-ancestors 'self';" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <title>Shop — Faiez Mhamdi | Robotics & AI Education</title>
-  <meta name="description" content="Browse courses and robotics kits by Faiez Mhamdi. Python programming, AI & machine learning courses, Arduino and Raspberry Pi starter kits for students." />
-  <meta name="author" content="Faiez Mhamdi" />
+  <title>Courses — Mectrion |Erasmus Training, Robotics & AI Education</title>
+  <meta name="description" content="Browse courses and robotics kits by Mectrion. Python programming, AI & machine learning courses, Arduino and Raspberry Pi starter kits for students." />
+  <meta name="author" content="Mectrion" />
 
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Shop — Faiez Mhamdi | Robotics & AI Education" />
+  <meta property="og:title" content="Shop — Mectrion | Robotics & AI Education" />
   <meta property="og:description" content="Browse courses and robotics kits. Python programming, AI & machine learning courses, Arduino and Raspberry Pi starter kits." />
   <meta property="og:image" content="icon.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Shop — Faiez Mhamdi | Robotics & AI Education" />
+  <meta name="twitter:title" content="Shop — Mectrion | Robotics & AI Education" />
   <meta name="twitter:description" content="Courses and robotics kits for students of all levels." />
 
-  <link rel="icon" href="11111.png" type="image/png" />
+  <link rel="icon" href="mectronicon.png" type="image/png" />
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha384-/o6I2CkkWC//PSjvWC/eYN7l3xM3tJm8ZzVkCOfp//W05QcE3mlGskpoHB6XqI+B" crossorigin="anonymous"/>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- CSS Files -->
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="enhancements.css" />
@@ -35,7 +35,7 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="floating-bg"></div>
-  <div id="site-header" data-active="shop" data-cta="cart"></div>
+  <div id="site-header" data-active="shop"></div>
   <script src="components.js"></script>
 
   <main id="main-content">
@@ -58,109 +58,987 @@
     </div>
   </section>
 
-  <!-- FEATURED PRODUCTS -->
-  <section id="featured" class="section">
-    <div class="section-header">
-      <h2>Featured Products</h2>
-      <p class="section-subtitle">Hand-picked courses and kits for optimal learning</p>
+
+<!-- FEATURED PRODUCTS -->
+
+
+
+
+
+<!-- FEATURED PRODUCTS - Complete Robotics & Tech Workshop -->
+<section id="featured" class="section">
+  
+  <!-- Inline styles for this section only -->
+  <style>
+    /* These styles only affect this section */
+    #featured .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    #featured .section-header h2 {
+      font-size: 2.5rem;
+      color: #2d3436;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    #featured .section-subtitle {
+      font-size: 1.1rem;
+      color: #636e72;
+    }
+
+    #featured .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+
+    #featured .product-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    #featured .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    #featured .product-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    #featured .modality-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .modality-online {
+      background: #0a9cb0;
+    }
+
+    .modality-presential {
+      background: #e17055;
+    }
+
+    .modality-hybrid {
+      background: #6c5ce7;
+    }
+
+    #featured .product-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #f5f6fa;
+    }
+
+    #featured .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    #featured .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    #featured .product-content {
+      padding: 25px;
+    }
+
+    #featured .product-category {
+      display: inline-block;
+      background: #dfe6e9;
+      color: #2d3436;
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    #featured .product-content h3 {
+      font-size: 1.2rem;
+      color: #2d3436;
+      margin-bottom: 8px;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    #featured .product-content h3:hover {
+      color: #0a9cb0;
+    }
+
+    #featured .product-content a {
+      text-decoration: none;
+      color: black;
+    }
+
+    #featured .product-description {
+      color: #636e72;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    #featured .product-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    #featured .product-feature {
+      background: #f5f6fa;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      color: #2d3436;
+      font-weight: 500;
+    }
+
+    #featured .product-feature.level {
+      background: #0a9cb0;
+      color: white;
+    }
+
+    #featured .product-feature.duration {
+      background: #00b894;
+      color: white;
+    }
+
+    #featured .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      text-decoration: none;
+    }
+
+    #featured .btn-course {
+      background: #0a9cb0;
+      color: white;
+    }
+
+    #featured .btn-course:hover {
+      background: #0873c7;
+      transform: scale(1.02);
+    }
+
+    #featured .btn-course i {
+      font-size: 1.1rem;
+    }
+
+    #featured .category-divider {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px 0 20px 0;
+      border-bottom: 2px solid #e17055;
+      margin-bottom: 20px;
+    }
+
+    #featured .category-divider h2 {
+      font-size: 2rem;
+      color: #2d3436;
+      font-weight: 700;
+      display: inline-block;
+      padding: 0 30px;
+    }
+
+    #featured .category-divider span {
+      color: #e17055;
+    }
+
+    /* Notification styles */
+    .notification-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 350px;
+      width: 100%;
+    }
+
+    .notification {
+      background: #2d3436;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      animation: slideIn 0.3s ease;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .notification i {
+      color: #00b894;
+      font-size: 1.2rem;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOut {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #featured .section-header h2 {
+        font-size: 2rem;
+      }
+      
+      #featured .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      #featured .product-image {
+        height: 180px;
+      }
+      
+      #featured .product-content {
+        padding: 20px;
+      }
+
+      #featured .category-divider h2 {
+        font-size: 1.5rem;
+        padding: 0 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #featured .section-header h2 {
+        font-size: 1.5rem;
+      }
+      
+      #featured .product-features {
+        gap: 5px;
+      }
+      
+      #featured .product-feature {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+      }
+    }
+
+    /* Expandable course details */
+    #featured .course-quick-details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease, padding 0.4s ease;
+      margin: 0;
+      padding: 0 25px;
+    }
+
+    #featured .course-quick-details.open {
+      max-height: 500px;
+      opacity: 1;
+      margin-bottom: 20px;
+      padding: 0 25px;
+    }
+
+    #featured .course-quick-details .quick-points {
+      list-style: none;
+      padding: 15px 15px 5px 15px;
+      margin: 0;
+      background: #f0f6f6;
+      border-left: 3px solid #0a9cb0;
+      border-radius: 8px;
+    }
+
+    #featured .course-quick-details .quick-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.87rem;
+      color: #2d3436;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    #featured .course-quick-details .quick-points li:last-child {
+      margin-bottom: 0;
+    }
+
+    #featured .course-quick-details .quick-points li i {
+      color: #0a9cb0;
+      font-size: 0.8rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    #featured .btn-details {
+      background: #f0f6f6;
+      color: #0a9cb0;
+      border: 2px solid #0a9cb0;
+    }
+
+    #featured .btn-details:hover {
+      background: #0a9cb0;
+      color: white;
+    }
+  </style>
+
+  <div class="section-header">
+    <h2>Complete Robotics & Technology Workshop</h2>
+    <p class="section-subtitle">Everything you need for robotics, programming, and digital skills - Online & Presential</p>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- ===== CATEGORY: ROBOTICS & HARDWARE ===== -->
+    <div class="category-divider">
+      <h2>🤖 <span>Robotics & Hardware</span></h2>
     </div>
 
-    <div class="products-grid">
-      <!-- Python Course -->
-      <div class="product-card">
-        <div class="product-badge">Bestseller</div>
-        <div class="product-image">
-          <img src="pic2.webp" alt="Python Programming Course" loading="lazy">
+    <!-- Arduino Course -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #e17055;">Bestseller</div>
+      <div class="modality-badge modality-hybrid"></div>
+      <div class="product-image">
+        <img src="pic2.webp" alt="Arduino Programming Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Robotics</span>
+        <a href="arduino.html">
+          <h3>Arduino Programming & Robotics</h3>
+        </a>
+        <p class="product-description">Master Arduino from basics to advanced robotics. Build autonomous robots, sensor systems, and IoT devices.</p>
+        <div class="product-features">
+          <span class="product-feature level">Level: All</span>
+          <span class="product-feature duration">40+ Hours</span>
+          <span class="product-feature">10+ Projects</span>
+          <span class="product-feature">Certificate</span>
         </div>
-        <div class="product-content">
-          <span class="product-category">Online Course</span>
-          <a href="python.html" style="text-decoration: none; color: black;">
-          <h3>Python Programming</h3>
-          </a>
-          <p class="product-description">Master Python from basics to advanced concepts with real-world projects. Perfect for beginners starting their coding journey.</p>
-          <div class="product-features">
-            <span class="product-feature">30+ Lessons</span>
-            <span class="product-feature">5 Projects</span>
-            <span class="product-feature">Lifetime Access</span>
-            <span class="product-feature">Ages 10+</span>
-          </div>
-          <div class="product-price">
-            <div>
-              <span class="price">$49.99</span>
-              <span class="original-price">$79.99</span>
-              <span class="discount">38% OFF</span>
-            </div>
-          </div>
-          <button class="btn btn-course add-to-cart" data-product="Python Course" data-price="49.99">
-            <i class="fas fa-cart-plus"></i>
-            <span>Add to Cart</span>
-          </button>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>From wiring basics to autonomous robots and IoT devices.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Build 10+ hands-on projects with sensors, motors, and displays.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Learn C/C++ for Arduino and how to read circuit diagrams.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Certificate of completion included.</span></li>
+          </ul>
         </div>
       </div>
+    </div>
 
-      <!-- Robotics Kit -->
-      <div class="product-card">
-        <div class="product-badge">Popular</div>
-        <div class="product-image">
-          <img src="pic3.webp" alt="Robotics Starter Kit" loading="lazy">
+    <!-- ESP32 / ESP8266 -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #0a9cb0;">New</div>
+      <div class="modality-badge modality-online"></div>
+      <div class="product-image">
+        <img src="pic2.webp" alt="ESP32 ESP8266 Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">IoT & Hardware</span>
+        <a href="esp.html">
+          <h3>ESP32 / ESP8266 IoT Workshop</h3>
+        </a>
+        <p class="product-description">Build professional IoT projects with ESP32 and ESP8266. Wi-Fi, Bluetooth, MQTT, sensors, and cloud integration.</p>
+        <div class="product-features">
+          <span class="product-feature level">Level: Intermediate</span>
+          <span class="product-feature duration">35+ Hours</span>
+          <span class="product-feature">15+ Projects</span>
+          <span class="product-feature">Certificate</span>
         </div>
-        <div class="product-content">
-          <span class="product-category">Hardware Kit</span>
-          <h3>Robotics Starter Kit</h3>
-          <p class="product-description">Complete kit to build and program your first robot. Includes sensors, motors, and step-by-step tutorials.</p>
-          <div class="product-features">
-            <span class="product-feature">All Components</span>
-            <span class="product-feature">15 Projects</span>
-            <span class="product-feature">Video Guides</span>
-            <span class="product-feature">Ages 12+</span>
-          </div>
-          <div class="product-price">
-            <div>
-              <span class="price">$89.99</span>
-              <span class="original-price">$119.99</span>
-              <span class="discount">25% OFF</span>
-            </div>
-          </div>
-          <button class="btn btn-course add-to-cart" data-product="Robotics Kit" data-price="89.99">
-            <i class="fas fa-cart-plus"></i>
-            <span>Add to Cart</span>
-          </button>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Learn the basics of electronics and how to write efficient embedded C code.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Understand the Internet of Things (IoT) with MQTT and cloud platforms.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Use Wi-Fi and Bluetooth to connect projects to apps and dashboards.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Projects: environmental monitor, smart home, and more.</span></li>
+          </ul>
         </div>
       </div>
+    </div>
 
-      <!-- AI Projects -->
-      <div class="product-card">
-        <div class="product-badge">New</div>
-        <div class="product-image">
-          <img src="pic4.webp" alt="AI & Machine Learning Projects" loading="lazy">
+    <!-- Raspberry Pi -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #00b894;">Popular</div>
+      <div class="modality-badge modality-hybrid"></div>
+      <div class="product-image">
+        <img src="pic2.webp" alt="Raspberry Pi Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Single Board Computer</span>
+        <a href="raspberrypi.html">
+          <h3>Raspberry Pi Masterclass</h3>
+        </a>
+        <p class="product-description">Learn to build IoT projects, media centers, home automation, and robotics with Raspberry Pi.</p>
+        <div class="product-features">
+          <span class="product-feature level">Level: All</span>
+          <span class="product-feature duration">30+ Hours</span>
+          <span class="product-feature">12+ Projects</span>
+          <span class="product-feature">Certificate</span>
         </div>
-        <div class="product-content">
-          <span class="product-category">Project Bundle</span>
-          <a href="AI.html" style="text-decoration: none; color: black;">
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Set up and configure your Raspberry Pi from scratch.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Build IoT projects, home automation, and media centers.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Use Python and GPIO to control sensors and motors.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>12+ guided projects with step-by-step tutorials.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drones & UAV Design -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #6c5ce7;"></div>
+      <div class="modality-badge modality-presential"></div>
+      <div class="product-image">
+        <img src="pic3.webp" alt="Drones Design Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Aerial Robotics</span>
+        <a href="drones.html">
+          <h3>Drones & UAV Design</h3>
+        </a>
+        <p class="product-description">Complete drone design, building, and programming. Learn aerodynamics, flight controllers, and autonomous flight.</p>
+        <div class="product-features">
+          <span class="product-feature level">Level: Advanced</span>
+          <span class="product-feature duration">50+ Hours</span>
+          <span class="product-feature">8+ Projects</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Design and build your own drone from frame to flight controller.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Learn aerodynamics, motor selection, and flight tuning.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Program autonomous flight and obstacle avoidance.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>8+ hands-on building and flight projects.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D Printing & Design -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #e17055;">Bestseller</div>
+      <div class="modality-badge modality-hybrid"></div>
+      <div class="product-image">
+        <img src="pic4.webp" alt="3D Printing Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Additive Manufacturing</span>
+        <a href="3dprinting.html">
+          <h3>3D Printing & Design</h3>
+        </a>
+        <p class="product-description">Master 3D modeling, slicing, and printing. Learn FDM, SLA, and advanced post-processing techniques.</p>
+        <div class="product-features">
+          <span class="product-feature level">Level: All</span>
+          <span class="product-feature duration">40+ Hours</span>
+          <span class="product-feature">20+ Projects</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Design your own 3D models and prepare them for printing.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Learn the main printing technologies: FDM, SLA, and resin.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Master slicing, supports, and advanced post-processing.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>20+ practical printing projects.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CNC & Laser Cutting -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #0a9cb0;">New</div>
+      <div class="modality-badge modality-presential"></div>
+      <div class="product-image">
+        <img src="pic3.webp" alt="CNC Laser Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Digital Fabrication</span>
+        <a href="cnc.html">
+          <h3>CNC & Laser Cutting Workshop</h3>
+        </a>
+        <p class="product-description">Learn CNC machining, laser cutting, and engraving. Design for manufacturing with CAD/CAM software.</p>
+        <div class="product-features">
+          <span class="product-feature level">Level: Intermediate</span>
+          <span class="product-feature duration">35+ Hours</span>
+          <span class="product-feature">15+ Projects</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Learn how CNC machines and laser cutters work.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Design for manufacturing using CAD/CAM software.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Cut and engrave wood, acrylic, metal, and more.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>15+ machining and engraving projects.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SolidWorks / CAD Design -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #00b894;">Popular</div>
+      <div class="modality-badge modality-online"></div>
+      <div class="product-image">
+        <img src="pic4.webp" alt="SolidWorks Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">3D CAD Design</span>
+        <a href="solidworks.html">
+          <h3>SolidWorks & CAD Design</h3>
+        </a>
+        <p class="product-description">Professional 3D modeling, assembly design, and engineering drawings with SolidWorks.</p>
+        <div class="product-features">
+          <span class="product-feature level">Level: All</span>
+          <span class="product-feature duration">45+ Hours</span>
+          <span class="product-feature">25+ Projects</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Master 3D modeling, assembly design, and engineering drawings.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Use SolidWorks tools used by professional engineers.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Apply CAD in real projects: parts, assemblies, and renders.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>25+ design exercises and projects.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- VR / Virtual Reality -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #6c5ce7;">Advanced</div>
+      <div class="modality-badge modality-online"></div>
+      <div class="product-image">
+        <img src="pic2.webp" alt="Virtual Reality Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">XR Technologies</span>
+        <a href="vr.html">
+          <h3>Virtual Reality Development</h3>
+        </a>
+        <p class="product-description">Build immersive VR experiences with Unity, Unreal Engine, and WebXR. Design for Oculus, HTC Vive, and more.</p>
+        <div class="product-features">
+          <span class="product-feature level">Level: Advanced</span>
+          <span class="product-feature duration">50+ Hours</span>
+          <span class="product-feature">10+ Projects</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Build immersive VR experiences with Unity, Unreal Engine, and WebXR.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Design interactions for Oculus, HTC Vive, and mobile headsets.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Learn 3D environments, physics, and user interfaces.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>10+ VR development projects.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CATEGORY: COMPUTER SCIENCE & ICT ===== -->
+    <div class="category-divider">
+      <h2>💻 <span>Computer Science & ICT</span></h2>
+    </div>
+
+    <!-- Cambridge Computer Science -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #e17055;">Cambridge</div>
+      <div class="modality-badge modality-hybrid"></div>
+      <div class="product-image">
+        <img src="pic2.webp" alt="Cambridge Computer Science" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">International Curriculum</span>
+        <a href="cambridge.html">
+          <h3>Cambridge Computer Science</h3>
+        </a>
+        <p class="product-description">Complete Cambridge IGCSE & A-Level Computer Science curriculum. Programming, algorithms, and theory.</p>
+        <div class="product-features">
+          <span class="product-feature level">KS3, KS4, KS5</span>
+          <span class="product-feature duration">Full Course</span>
+          <span class="product-feature">Exam Prep</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Full Cambridge IGCSE & A-Level Computer Science curriculum.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Programming, algorithms, data structures, and computer systems.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Exam-focused preparation with past papers and mock tests.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Certificate of completion included.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edexcel ICT -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #0a9cb0;">Edexcel</div>
+      <div class="modality-badge modality-hybrid"></div>
+      <div class="product-image">
+        <img src="pic4.webp" alt="Edexcel ICT" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">International Curriculum</span>
+        <a href="edexcel.html">
+          <h3>Edexcel ICT & Computer Science</h3>
+        </a>
+        <p class="product-description">Complete Edexcel curriculum for ICT and Computer Science. Digital literacy, programming, and systems.</p>
+        <div class="product-features">
+          <span class="product-feature level">KS3, KS4, KS5</span>
+          <span class="product-feature duration">Full Course</span>
+          <span class="product-feature">Exam Prep</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Full Edexcel curriculum for ICT and Computer Science.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Digital literacy, programming, and computer systems.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Exam preparation with practice papers and model answers.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Certificate of completion included.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Python Programming -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #e17055;">Bestseller</div>
+      <div class="modality-badge modality-online"></div>
+      <div class="product-image">
+        <img src="pic2.webp" alt="Python Programming Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Programming</span>
+        <a href="python.html">
+          <h3>Python Programming Masterclass</h3>
+        </a>
+        <p class="product-description">Master Python from basics to advanced. Data science, AI, web development, and automation.</p>
+        <div class="product-features">
+          <span class="product-feature level">All Levels</span>
+          <span class="product-feature duration">50+ Hours</span>
+          <span class="product-feature">20+ Projects</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>From Python basics to advanced topics and best practices.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Explore automation, data science, AI, and web development.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Build 20+ real projects with guided exercises.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Certificate of completion included.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Java Programming -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #00b894;">Popular</div>
+      <div class="modality-badge modality-online"></div>
+      <div class="product-image">
+        <img src="pic2.webp" alt="Java Programming Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Programming</span>
+        <a href="java.html">
+          <h3>Java Programming Masterclass</h3>
+        </a>
+        <p class="product-description">Complete Java development with OOP, data structures, and enterprise applications.</p>
+        <div class="product-features">
+          <span class="product-feature level">Intermediate</span>
+          <span class="product-feature duration">45+ Hours</span>
+          <span class="product-feature">15+ Projects</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Complete Java development with a focus on OOP.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Master data structures, algorithms, and file handling.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Build real console and desktop applications.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>15+ programming projects included.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- C++ Programming -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #0a9cb0;">Advanced</div>
+      <div class="modality-badge modality-online"></div>
+      <div class="product-image">
+        <img src="pic2.webp" alt="C++ Programming Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Programming</span>
+        <a href="cpp.html">
+          <h3>C++ Programming & Game Dev</h3>
+        </a>
+        <p class="product-description">Advanced C++ for game development, system programming, and real-time applications.</p>
+        <div class="product-features">
+          <span class="product-feature level">Advanced</span>
+          <span class="product-feature duration">40+ Hours</span>
+          <span class="product-feature">10+ Projects</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Advanced C++ for system programming and game development.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Deep dive into OOP, pointers, memory, and STL.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Create real-time applications and simple game engines.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>10+ projects and challenges.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Development -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #00b894;">Popular</div>
+      <div class="modality-badge modality-online"></div>
+      <div class="product-image">
+        <img src="pic4.webp" alt="Web Development Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Web Development</span>
+        <a href="webdev.html">
+          <h3>Full Stack Web Development</h3>
+        </a>
+        <p class="product-description">Complete web development with HTML, CSS, JavaScript, React, Node.js, and databases.</p>
+        <div class="product-features">
+          <span class="product-feature level">All Levels</span>
+          <span class="product-feature duration">60+ Hours</span>
+          <span class="product-feature">20+ Projects</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Master HTML, CSS, JavaScript, React, Node.js, and databases.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Build responsive, modern websites and full-stack apps.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Learn REST APIs, authentication, and deployment.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>20+ projects including a complete portfolio.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cyber Security -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #e17055;">Bestseller</div>
+      <div class="modality-badge modality-online"></div>
+      <div class="product-image">
+        <img src="pic3.webp" alt="Cyber Security Course" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Security</span>
+        <a href="cybersecurity.html">
+          <h3>Cyber Security & Ethical Hacking</h3>
+        </a>
+        <p class="product-description">Master ethical hacking, network security, cryptography, and defense strategies.</p>
+        <div class="product-features">
+          <span class="product-feature level">Intermediate</span>
+          <span class="product-feature duration">50+ Hours</span>
+          <span class="product-feature">15+ Labs</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Master ethical hacking, network security, and cryptography.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Practice in real lab environments with 15+ security labs.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Learn defense strategies and penetration testing.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Certificate of completion included.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI & Machine Learning -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #6c5ce7;">Advanced</div>
+      <div class="modality-badge modality-online"></div>
+      <div class="product-image">
+        <img src="pic4.webp" alt="AI Machine Learning" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">AI & Data Science</span>
+        <a href="AI.html">
           <h3>AI & Machine Learning</h3>
-          </a>
-          <p class="product-description">Explore artificial intelligence through practical projects. Learn computer vision, NLP, and predictive models.</p>
-          <div class="product-features">
-            <span class="product-feature">8 AI Projects</span>
-            <span class="product-feature">Datasets Included</span>
-            <span class="product-feature">Code Templates</span>
-            <span class="product-feature">Ages 14+</span>
-          </div>
-          <div class="product-price">
-            <div>
-              <span class="price">$69.99</span>
-              <span class="original-price">$99.99</span>
-              <span class="discount">30% OFF</span>
-            </div>
-          </div>
-          <button class="btn btn-course add-to-cart" data-product="AI Projects" data-price="69.99">
-            <i class="fas fa-cart-plus"></i>
-            <span>Add to Cart</span>
-          </button>
+        </a>
+        <p class="product-description">Deep learning, neural networks, computer vision, NLP, and generative AI with Python.</p>
+        <div class="product-features">
+          <span class="product-feature level">Advanced</span>
+          <span class="product-feature duration">55+ Hours</span>
+          <span class="product-feature">12+ Projects</span>
+          <span class="product-feature">Certificate</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Deep learning, neural networks, computer vision, and NLP.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Hands-on with machine learning frameworks and Python.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Explore generative AI and real-world AI applications.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>12+ AI projects included.</span></li>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
+
+    <!-- Robotics Kit - Hardware -->
+    <div class="product-card">
+      <div class="product-badge" style="background: #00b894;">Popular</div>
+      <div class="modality-badge modality-presential"></div>
+      <div class="product-image">
+        <img src="pic3.webp" alt="Robotics Starter Kit" loading="lazy">
+      </div>
+      <div class="product-content">
+        <span class="product-category">Hardware Kit</span>
+        <h3>Robotics Starter Kit</h3>
+        <p class="product-description">Complete kit to build and program your first robot. Includes sensors, motors, and step-by-step tutorials.</p>
+        <div class="product-features">
+          <span class="product-feature">All Components</span>
+          <span class="product-feature">15 Projects</span>
+          <span class="product-feature">Video Guides</span>
+          <span class="product-feature">Ages 12+</span>
+        </div>
+        <button class="btn btn-course btn-details" aria-expanded="false">
+          Details
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="course-quick-details">
+          <ul class="quick-points">
+            <li><i class="fas fa-check-circle"></i><span>Complete kit to build and program your first robot.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Includes sensors, motors, controllers, and all components.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Step-by-step video tutorials for 15 projects.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Designed for ages 12 and up.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
 
   <!-- HOW IT WORKS -->
   <section id="how-it-works" class="section how-it-works">

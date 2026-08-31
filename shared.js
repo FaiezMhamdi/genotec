@@ -108,7 +108,7 @@ const Shared = {
     formatPrice(price) {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
-            currency: 'USD'
+            currency: 'EUR'
         }).format(price);
     },
 
