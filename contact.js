@@ -2,6 +2,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     const faqItems = document.querySelectorAll('.faq-item');
+    const userTypeRadios = document.querySelectorAll('input[name="userType"]');
+    const erasmusGroup = document.getElementById('erasmusGroup');
+    const generalGroup = document.getElementById('generalGroup');
+    const subjectSelect = document.getElementById('subject');
+
+    // User type selector change handler
+    userTypeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            handleUserTypeChange(this.value);
+            clearError(document.getElementById('userType'));
+        });
+    });
+
+    function handleUserTypeChange(userType) {
+        if (userType === 'Erasmus Student') {
+            // Show Erasmus subjects, hide general subjects
+            erasmusGroup.style.display = 'block';
+            generalGroup.style.display = 'none';
+            // Reset subject selection
+            subjectSelect.value = '';
+        } else if (userType === 'Particular') {
+            // Show general subjects, hide Erasmus subjects
+            erasmusGroup.style.display = 'none';
+            generalGroup.style.display = 'block';
+            // Reset subject selection
+            subjectSelect.value = '';
+        }
+    }
 
     // Form validation — let browser submit to FormSubmit on success
     if (contactForm) {
@@ -45,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function validateForm() {
         let isValid = true;
         const fields = [
+            { id: 'userType', validator: validateUserType },
             { id: 'name', validator: validateRequired },
             { id: 'email', validator: validateEmail },
             { id: 'subject', validator: validateRequired },
@@ -76,8 +105,24 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'select-one':
                 isValid = validateRequired(field);
                 break;
+            case 'radio':
+                isValid = validateUserType(field);
+                break;
             default:
                 isValid = validateRequired(field);
+        }
+        
+        return isValid;
+    }
+
+    function validateUserType(field) {
+        const checkedRadio = document.querySelector('input[name="userType"]:checked');
+        const isValid = !!checkedRadio;
+        
+        if (!isValid) {
+            showError(field, 'Please select your type');
+        } else {
+            clearError(field);
         }
         
         return isValid;
